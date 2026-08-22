@@ -1,0 +1,1266 @@
+<title>Karakamsha & the Khara Pada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..700&family=Karla:ital,wght@0,300..700;1,300..600&family=Noto+Serif+Devanagari:wght@400;600&display=swap">
+
+<style>
+:root{
+  --ground:#FCF5F1;
+  --ground-2:#F6EAF0;
+  --paper:#FFFDFC;
+  --paper-2:#FBF2F5;
+  --ink:#3A2B48;
+  --ink-soft:#5C4A6B;
+  --muted:#8A7593;
+  --line:#E7D6DE;
+  --line-soft:#F0E3E9;
+  --blush:#F3CDDA;
+  --lilac:#DFD1F2;
+  --gold:#B8823C;
+  --rose:#B85A7C;
+  --violet:#7A5AA8;
+  --sage:#6E8A78;
+  --shadow:0 1px 2px rgba(58,43,72,.04), 0 8px 28px -14px rgba(58,43,72,.22);
+  --radius:18px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#20182A;
+    --ground-2:#271E33;
+    --paper:#2A2136;
+    --paper-2:#31263F;
+    --ink:#F3EAF3;
+    --ink-soft:#D8C9DF;
+    --muted:#A995B4;
+    --line:#3D3049;
+    --line-soft:#352A42;
+    --blush:#6B3F55;
+    --lilac:#4A3B66;
+    --gold:#E0B270;
+    --rose:#EFA0BC;
+    --violet:#BCA2E8;
+    --sage:#9CC0A8;
+    --shadow:0 1px 2px rgba(0,0,0,.2), 0 10px 30px -16px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#20182A;
+  --ground-2:#271E33;
+  --paper:#2A2136;
+  --paper-2:#31263F;
+  --ink:#F3EAF3;
+  --ink-soft:#D8C9DF;
+  --muted:#A995B4;
+  --line:#3D3049;
+  --line-soft:#352A42;
+  --blush:#6B3F55;
+  --lilac:#4A3B66;
+  --gold:#E0B270;
+  --rose:#EFA0BC;
+  --violet:#BCA2E8;
+  --sage:#9CC0A8;
+  --shadow:0 1px 2px rgba(0,0,0,.2), 0 10px 30px -16px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"Karla", ui-sans-serif, system-ui, sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";
+  position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background:
+    radial-gradient(60rem 40rem at 12% -8%, var(--blush) 0%, transparent 62%),
+    radial-gradient(52rem 38rem at 92% 6%, var(--lilac) 0%, transparent 60%),
+    radial-gradient(46rem 40rem at 50% 108%, var(--ground-2) 0%, transparent 65%);
+  opacity:.55;
+}
+h1,h2,h3,h4{font-family:"Fraunces", Georgia, serif; font-weight:500; text-wrap:balance; margin:0; line-height:1.16;}
+p{margin:0}
+a{color:inherit}
+
+.wrap{max-width:1120px; margin:0 auto; padding:0 clamp(18px,4vw,40px);}
+.col{max-width:720px; margin:0 auto;}
+
+/* ---------- header ---------- */
+header.hero{padding:clamp(56px,10vw,110px) 0 clamp(30px,5vw,54px);}
+.kicker{
+  font-size:12px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--muted); font-weight:600;
+}
+.hero h1{
+  font-size:clamp(42px,8vw,82px);
+  font-weight:400;
+  letter-spacing:-.015em;
+  margin:.28em 0 .1em;
+}
+.hero h1 em{font-style:italic; color:var(--rose);}
+.hero .sub{
+  font-family:"Fraunces", Georgia, serif;
+  font-size:clamp(19px,2.6vw,24px);
+  font-weight:300; font-style:italic;
+  color:var(--ink-soft); max-width:34ch; margin-top:.4em;
+}
+.hero-meta{
+  margin-top:clamp(26px,4vw,40px);
+  display:flex; flex-wrap:wrap; gap:10px 26px; align-items:center;
+  font-size:13px; color:var(--muted); letter-spacing:.04em;
+}
+.hero-meta span{display:inline-flex; align-items:center; gap:8px;}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--gold);display:inline-block}
+
+.note-strip{
+  margin-top:clamp(30px,5vw,46px);
+  border-left:2px solid var(--gold);
+  padding:4px 0 4px 18px;
+  color:var(--ink-soft);
+  font-size:15.5px;
+  max-width:56ch;
+}
+
+/* ---------- chapter nav ---------- */
+nav.chapters{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:blur(14px) saturate(1.3);
+  background:color-mix(in srgb, var(--ground) 82%, transparent);
+  border-bottom:1px solid var(--line-soft);
+}
+nav.chapters ol{
+  list-style:none; margin:0 auto; padding:0 clamp(18px,4vw,40px);
+  max-width:1120px;
+  display:flex; gap:2px; overflow-x:auto; scrollbar-width:thin;
+}
+nav.chapters a{
+  display:block; padding:13px 12px; text-decoration:none;
+  font-size:12.5px; letter-spacing:.06em; white-space:nowrap;
+  color:var(--muted); border-bottom:2px solid transparent;
+  transition:color .2s, border-color .2s;
+}
+nav.chapters a:hover{color:var(--ink)}
+nav.chapters a.on{color:var(--ink); border-bottom-color:var(--rose); font-weight:600;}
+nav.chapters a:focus-visible{outline:2px solid var(--violet); outline-offset:-4px; border-radius:4px}
+
+/* ---------- sections ---------- */
+section{padding:clamp(48px,8vw,86px) 0;}
+section + section{border-top:1px solid var(--line-soft);}
+.sec-head{margin-bottom:clamp(26px,4vw,40px);}
+.sec-head .eyebrow{
+  font-size:11.5px; letter-spacing:.24em; text-transform:uppercase;
+  color:var(--rose); font-weight:700;
+}
+.sec-head h2{font-size:clamp(28px,4.6vw,42px); margin-top:.34em; letter-spacing:-.01em;}
+.sec-head .lede{margin-top:.8em; color:var(--ink-soft); font-size:17.5px; max-width:60ch;}
+
+.body-col > * + *{margin-top:1.05em}
+.body-col p{max-width:66ch}
+strong{font-weight:700; color:var(--ink)}
+.sk{font-family:"Fraunces",Georgia,serif; font-style:italic; color:var(--violet); font-weight:500;}
+
+/* ---------- cards ---------- */
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:clamp(20px,3.2vw,30px);
+  box-shadow:var(--shadow);
+}
+.grid{display:grid; gap:16px;}
+.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+
+.card h3{font-size:20px; letter-spacing:-.005em}
+.card .lab{
+  font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--muted); font-weight:700; display:block; margin-bottom:10px;
+}
+.card p{color:var(--ink-soft); font-size:16px; margin-top:.6em}
+
+.twelfth{position:relative; overflow:hidden}
+.twelfth .num{
+  font-family:"Fraunces",Georgia,serif; font-size:64px; line-height:1;
+  color:var(--line); position:absolute; right:14px; top:6px; font-weight:600;
+}
+.twelfth h3{position:relative}
+.twelfth .from{
+  font-size:13px; color:var(--rose); font-weight:700; letter-spacing:.04em;
+  margin-top:6px;
+}
+
+/* ---------- pull quote (teacher's voice) ---------- */
+.voice{
+  margin:clamp(28px,4vw,42px) auto;
+  max-width:640px;
+  padding:clamp(22px,3.5vw,32px) clamp(22px,3.5vw,34px);
+  border-radius:var(--radius);
+  background:linear-gradient(135deg, color-mix(in srgb, var(--blush) 55%, var(--paper)) 0%, color-mix(in srgb, var(--lilac) 55%, var(--paper)) 100%);
+  border:1px solid var(--line);
+}
+.voice p{
+  font-family:"Fraunces",Georgia,serif; font-style:italic;
+  font-size:clamp(19px,2.4vw,23px); line-height:1.45; color:var(--ink);
+  font-weight:400;
+}
+.voice .attr{
+  margin-top:14px; font-family:"Karla",sans-serif; font-style:normal;
+  font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft); font-weight:700;
+}
+
+/* ---------- definition rows ---------- */
+.defs{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line);}
+.def{
+  display:grid; grid-template-columns:minmax(140px,.42fr) 1fr; gap:8px 26px;
+  padding:16px 2px; border-bottom:1px solid var(--line);
+  align-items:baseline;
+}
+.def dt{font-family:"Fraunces",Georgia,serif; font-size:18px; font-weight:600; color:var(--ink);}
+.def dt small{display:block; font-family:"Karla",sans-serif; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:4px;}
+.def dd{margin:0; color:var(--ink-soft); font-size:16px;}
+@media (max-width:620px){ .def{grid-template-columns:1fr; gap:4px} }
+
+/* ---------- flow chips ---------- */
+.flow{
+  display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+  padding:18px; border-radius:14px;
+  background:var(--paper-2); border:1px dashed var(--line);
+}
+.chip{
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--paper); border:1px solid var(--line);
+  border-radius:999px; padding:7px 15px;
+  font-size:14px; font-weight:600; color:var(--ink);
+}
+.chip.hot{background:color-mix(in srgb,var(--blush) 60%,var(--paper)); border-color:var(--rose)}
+.arrow{color:var(--muted); font-size:15px}
+
+/* ---------- worked examples ---------- */
+.ex{
+  border:1px solid var(--line); border-radius:14px; overflow:hidden;
+  background:var(--paper);
+}
+.ex .top{
+  padding:12px 16px; background:var(--paper-2);
+  font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-weight:700;
+  border-bottom:1px solid var(--line);
+}
+.ex .rows{padding:14px 16px; display:flex; flex-direction:column; gap:8px; font-size:15px;}
+.ex .row{display:flex; justify-content:space-between; gap:12px; align-items:baseline;}
+.ex .row b{font-weight:600; color:var(--ink-soft); font-size:12.5px; letter-spacing:.1em; text-transform:uppercase;}
+.ex .row span{font-family:"Fraunces",Georgia,serif; font-size:16px}
+.ex .out{
+  margin-top:4px; padding:11px 16px; border-top:1px dashed var(--line);
+  background:linear-gradient(90deg, color-mix(in srgb,var(--lilac) 40%,var(--paper)), transparent);
+  font-family:"Fraunces",Georgia,serif; font-size:17px; font-weight:600;
+}
+.ex .out.bad{background:linear-gradient(90deg, color-mix(in srgb,var(--blush) 55%,var(--paper)), transparent); color:var(--rose)}
+
+/* ---------- fire ladder ---------- */
+.ladder{display:flex; flex-direction:column; gap:2px; margin-top:8px}
+.rung{
+  display:grid; grid-template-columns:auto 1fr auto; gap:16px; align-items:center;
+  padding:15px 18px; border:1px solid var(--line); border-radius:12px;
+  background:var(--paper);
+}
+.rung .who{font-family:"Fraunces",Georgia,serif; font-size:18px; font-weight:600; min-width:112px}
+.rung .what{color:var(--ink-soft); font-size:15px}
+.rung .meter{
+  width:78px; height:7px; border-radius:99px; background:var(--line-soft); overflow:hidden; flex:none;
+}
+.rung .meter i{display:block; height:100%; border-radius:99px; background:linear-gradient(90deg,var(--gold),var(--rose));}
+.rung.final{border-color:var(--rose); background:linear-gradient(120deg, color-mix(in srgb,var(--blush) 42%,var(--paper)), var(--paper));}
+@media (max-width:560px){ .rung{grid-template-columns:1fr; gap:6px} .rung .meter{width:100%} }
+
+/* ---------- sutra ---------- */
+.sutra{
+  border:1px solid var(--line); border-radius:var(--radius);
+  background:var(--paper); overflow:hidden;
+}
+.sutra .dev{
+  padding:20px clamp(18px,3vw,28px) 6px;
+  font-family:"Noto Serif Devanagari", serif;
+  font-size:19px; line-height:1.9; color:var(--ink); text-align:center;
+}
+.sutra .iast{
+  padding:0 clamp(18px,3vw,28px) 16px;
+  font-family:"Fraunces",Georgia,serif; font-style:italic;
+  font-size:15.5px; color:var(--violet); text-align:center; line-height:1.6;
+}
+.sutra .mean{
+  padding:16px clamp(18px,3vw,28px);
+  border-top:1px solid var(--line-soft);
+  background:var(--paper-2);
+  font-size:16px; color:var(--ink);
+}
+.sutra .mean b{color:var(--rose)}
+.sutra .caution{
+  padding:14px clamp(18px,3vw,28px);
+  border-top:1px solid var(--line-soft);
+  font-size:14.5px; color:var(--ink-soft);
+  display:flex; gap:12px; align-items:flex-start;
+}
+.sutra .caution .tag{
+  flex:none; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
+  font-weight:700; color:var(--gold); padding-top:3px;
+}
+
+/* ---------- purushartha tally ---------- */
+.tally{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px;}
+.pot{
+  border:1px solid var(--line); border-radius:14px; background:var(--paper);
+  padding:16px; display:flex; flex-direction:column; gap:12px;
+}
+.pot h4{font-size:18px; font-family:"Fraunces",Georgia,serif; font-weight:600}
+.pot .pad{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); font-weight:700}
+.pot .desc{font-size:14px; color:var(--ink-soft); flex:1}
+.bar{height:8px; border-radius:99px; background:var(--line-soft); overflow:hidden}
+.bar i{display:block; height:100%; width:0%; border-radius:99px; transition:width .35s ease;}
+.pot[data-p="dharma"] .bar i{background:linear-gradient(90deg,var(--gold),#E0B879)}
+.pot[data-p="artha"] .bar i{background:linear-gradient(90deg,var(--sage),#A8C6B2)}
+.pot[data-p="kama"] .bar i{background:linear-gradient(90deg,var(--rose),var(--blush))}
+.pot[data-p="moksha"] .bar i{background:linear-gradient(90deg,var(--violet),var(--lilac))}
+.counter{display:flex; align-items:center; gap:10px}
+.counter button{
+  width:30px; height:30px; border-radius:50%; border:1px solid var(--line);
+  background:var(--paper-2); color:var(--ink); font-size:16px; line-height:1; cursor:pointer;
+  font-family:inherit; transition:background .15s, border-color .15s;
+}
+.counter button:hover{background:var(--blush); border-color:var(--rose)}
+.counter button:focus-visible{outline:2px solid var(--violet); outline-offset:2px}
+.counter output{
+  font-family:"Fraunces",Georgia,serif; font-size:22px; font-weight:600;
+  font-variant-numeric:tabular-nums; min-width:2ch; text-align:center;
+}
+.tally-foot{
+  margin-top:14px; font-size:14px; color:var(--muted);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+}
+
+/* ---------- shakti bands ---------- */
+.bands{display:flex; flex-direction:column; gap:10px}
+.band{
+  display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:center;
+  padding:16px 20px; border-radius:14px; border:1px solid var(--line);
+}
+.band .r{font-family:"Fraunces",Georgia,serif; font-size:13px; letter-spacing:.06em; color:var(--ink-soft); font-weight:600; white-space:nowrap}
+.band h4{font-family:"Fraunces",Georgia,serif; font-size:19px; font-weight:600; margin-bottom:2px}
+.band p{font-size:15px; color:var(--ink-soft)}
+.band.b1{background:linear-gradient(100deg, color-mix(in srgb,var(--blush) 40%,var(--paper)), var(--paper))}
+.band.b2{background:linear-gradient(100deg, color-mix(in srgb,var(--lilac) 42%,var(--paper)), var(--paper))}
+.band.b3{background:linear-gradient(100deg, color-mix(in srgb,var(--gold) 22%,var(--paper)), var(--paper))}
+@media (max-width:560px){ .band{grid-template-columns:1fr; gap:6px} }
+
+/* ---------- pada ruler svg ---------- */
+figure{margin:0}
+figcaption{font-size:13.5px; color:var(--muted); margin-top:10px; text-align:center}
+.scroll-x{overflow-x:auto; padding-bottom:4px}
+
+/* ---------- QA ---------- */
+.qa{display:flex; flex-direction:column; gap:12px}
+details.q{
+  border:1px solid var(--line); border-radius:14px; background:var(--paper);
+  overflow:hidden;
+}
+details.q summary{
+  cursor:pointer; list-style:none; padding:16px 20px;
+  font-family:"Fraunces",Georgia,serif; font-size:17.5px; font-weight:500;
+  display:flex; justify-content:space-between; gap:14px; align-items:center;
+}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::after{
+  content:"+"; color:var(--rose); font-size:20px; font-family:"Karla",sans-serif; flex:none;
+  transition:transform .2s;
+}
+details.q[open] summary::after{transform:rotate(45deg)}
+details.q summary:focus-visible{outline:2px solid var(--violet); outline-offset:-3px}
+details.q .a{padding:0 20px 18px; color:var(--ink-soft); font-size:16px; border-top:1px solid var(--line-soft); padding-top:14px}
+details.q .a p + p{margin-top:.8em}
+
+/* ---------- cheat sheet ---------- */
+.sheet{
+  border-radius:var(--radius); border:1px solid var(--line);
+  background:linear-gradient(160deg, color-mix(in srgb,var(--lilac) 34%,var(--paper)), color-mix(in srgb,var(--blush) 28%,var(--paper)));
+  padding:clamp(22px,3.4vw,34px);
+}
+.sheet table{width:100%; border-collapse:collapse; font-size:15.5px}
+.sheet th{
+  text-align:left; font-family:"Karla",sans-serif; font-size:11px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--ink-soft); font-weight:700; padding:0 14px 10px 0;
+  border-bottom:1px solid var(--line);
+}
+.sheet td{padding:11px 14px 11px 0; border-bottom:1px solid var(--line-soft); vertical-align:top; color:var(--ink-soft)}
+.sheet td:first-child{font-family:"Fraunces",Georgia,serif; color:var(--ink); font-weight:600; white-space:nowrap}
+
+footer{
+  padding:clamp(50px,8vw,90px) 0 clamp(40px,6vw,70px);
+  border-top:1px solid var(--line-soft);
+  text-align:center;
+}
+footer .om{font-family:"Noto Serif Devanagari",serif; font-size:30px; color:var(--gold)}
+footer p{margin-top:14px; color:var(--muted); font-size:14px}
+
+/* reveal */
+.rev{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease}
+.rev.in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rev{opacity:1; transform:none; transition:none}
+  *{scroll-behavior:auto !important}
+}
+html{scroll-behavior:smooth}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Jyotisha · Semester I · Navamsha, final lesson</p>
+    <h1>Karakamsha &amp;<br>the <em>Khara</em> Pada</h1>
+    <p class="sub">Where the soul is standing, what can dissolve it, and the one pada that keeps biting.</p>
+    <div class="hero-meta">
+      <span><i class="dot"></i>22 August · class + Q&amp;A</span>
+      <span><i class="dot"></i>D9 · the subtle sharira</span>
+      <span><i class="dot"></i>Notes from the teacher only</span>
+    </div>
+    <p class="note-strip">Everything on this page is from this one class — the slides, what he said around them, and the answers that came out in the Q&amp;A. Nothing has been added from outside, and where he told us to hold something loosely, that caution is kept beside it.</p>
+  </div>
+</header>
+
+<nav class="chapters" aria-label="Chapters">
+  <ol>
+    <li><a href="#twelfth">The three 12th houses</a></li>
+    <li><a href="#karakamsha">Karakamsha</a></li>
+    <li><a href="#dissolution">12th from Karakamsha</a></li>
+    <li><a href="#ishta">Ishta Devata</a></li>
+    <li><a href="#grahas">Grahas in Navamsha</a></li>
+    <li><a href="#khara">64th Navamsha</a></li>
+    <li><a href="#nidhanamsa">Nidhanamsa &amp; Ashtamamsa</a></li>
+    <li><a href="#purushartha">Purushartha padas</a></li>
+    <li><a href="#shakti">Brahma · Vishnu · Rudra</a></li>
+    <li><a href="#qa">From the Q&amp;A</a></li>
+    <li><a href="#sheet">Quick reference</a></li>
+  </ol>
+</nav>
+
+<main class="wrap">
+
+<!-- ============ 1. THREE TWELFTHS ============ -->
+<section id="twelfth">
+  <div class="col sec-head rev">
+    <p class="eyebrow">Where we start</p>
+    <h2>One house, read from three places</h2>
+    <p class="lede">Navamsha is your subtle sharira — your <span class="sk">mantra sharira</span>, your subtle existence. It also carries very high importance whenever marriage is being analysed. And in that chart, one house had not yet been given its due: the 12th.</p>
+  </div>
+
+  <div class="grid g3 rev">
+    <article class="card twelfth">
+      <span class="num">12</span>
+      <span class="lab">Slide</span>
+      <h3>From D1 Lagna</h3>
+      <p class="from">The gross letting-go</p>
+      <p>What one gives up and renounces. Expenditure, withdrawal. Your letting-go ability in the material world.</p>
+    </article>
+    <article class="card twelfth">
+      <span class="num">12</span>
+      <span class="lab">Slide</span>
+      <h3>From D9 Lagna</h3>
+      <p class="from">The subtle letting-go</p>
+      <p>Sleep, bed, private life, the intimate dimension. Letting go of the subtle body — and of the subtle ego, when you have no idea of yourself at all.</p>
+    </article>
+    <article class="card twelfth">
+      <span class="num">12</span>
+      <span class="lab">Slide</span>
+      <h3>From Karakamsha</h3>
+      <p class="from">The real dissolution</p>
+      <p>Moksha, emancipation, release of the soul. The true <span class="sk">ahamkara-antakara</span> — the dissolution of the self happens here.</p>
+    </article>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:clamp(28px,4vw,44px)">
+    <h3 style="font-size:22px">The double edge of the D9 twelfth</h3>
+    <p>Letting go of the subtle ego is good for spiritual growth — but your ego is also what keeps you on dharma. Ego gives you commitment. Losing it in the subtle can also lead you astray from dharma. This is why combinations in the 12th house of Navamsha can cause <strong>promiscuity in marriage</strong>. Good for spirituality; not good for marriage.</p>
+    <p>And count from the partner: the 7th of Navamsha is your partner, so your 12th is the <strong>6th from them</strong> — the enemy of your partner.</p>
+    <div class="voice">
+      <p>“When I teach this one — nobody talks about the 12th house of Navamsha anyway.”</p>
+      <p class="attr">In class</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. KARAKAMSHA ============ -->
+<section id="karakamsha">
+  <div class="col sec-head rev">
+    <p class="eyebrow">The focal point</p>
+    <h2>Karakamsha — where the whole chart looks</h2>
+    <p class="lede">There is one point in Navamsha which is the most crucial. The moment it is defined, your entire focus goes there: the rashi holding your <strong>Chara Atma Karaka</strong> in D9. Karaka + Amsha = <span class="sk">Karakamsha</span>. This is your spiritual seed.</p>
+  </div>
+
+  <div class="col body-col rev">
+    <div class="flow" role="img" aria-label="Chara Atma Karaka placed in the Navamsha chart gives the Karakamsha rashi, which is the environment shaping the soul">
+      <span class="chip">Chara Atma Karaka</span>
+      <span class="arrow">→</span>
+      <span class="chip">its rashi in D9</span>
+      <span class="arrow">→</span>
+      <span class="chip hot">Karakamsha</span>
+      <span class="arrow">→</span>
+      <span class="chip">the environment working on your Atma</span>
+    </div>
+
+    <p>The bhava it falls in matters. But <strong>more important than the bhava is the rashi</strong>, because the rashi is the environment, and the environment constantly affects and changes whoever sits in it. This is your subtle existence — that is where your Atma is.</p>
+
+    <p>So: whoever you are in this lifetime, <strong>what you will be in the next</strong> is seen from the rashi of the Atma Karaka. If your Atma Karaka sits in a Venus amsha, then whatever it is now, slowly you are turning into a Venus Atma Karaka — this entire life's experience is turning you into that graha's energy, because it works at a deeper level. Sitting in Venus's rashi, the Atma is aligning with <strong>Bhuvar Loka</strong>: material pleasures, relationships, beauty, glamour, music, art. In Sun's amsha, aligning with the <strong>Manipura</strong>, probably Swarga Loka.</p>
+
+    <p>He was clear that this is scriptural territory. There are texts that claim to show which loka the soul came from and which it is going to — but there is no evidence, nobody comes back to tell us. Very specific grahas are assigned to each loka in different scriptures, and looking at people's actual lives he could not relate to them, so that whole system was left out of the curriculum. <strong>We stay with the rashi placement only</strong>, because that much is logical: the environment shapes the one sitting in it.</p>
+
+    <h3 style="font-size:22px">Meena amsha, and why it still isn't a guarantee</h3>
+    <p>Maharishi Parashara: one whose Atma Karaka is in <strong>Meena amsha</strong> is a very mature soul — spiritual, detached, knowledgeable, pious. Usually a combination of moksha after this life; the pinnacle of spiritual maturity. When it is also aspected by a benefic, he says the native is liberated. Take it with a pinch of salt — say there is a good possibility of liberation.</p>
+  </div>
+
+  <div class="col rev" style="margin-top:26px">
+    <article class="card">
+      <span class="lab">The story he told · Moksha Sopan</span>
+      <h3>Snakes and ladders was a spiritual instrument first</h3>
+      <p>The game we know is the frivolous version of <span class="sk">Moksha Sopan</span>. The original had <strong>72 boxes</strong> — eight and nine — and each row carried the nine qualities of one chakra, from Muladhara upward, with the eighth level above everything. You play it with something personal that has held your energy for a long time — a ring, an earring — and after five or six rounds of dice it shows you which chakra your energy is actually stuck at.</p>
+      <p>He taught it in the ashram; in Nepal he built it human-size on a 25 × 25 ft platform and people stood inside it and played. He shared it with Gurudev about fifteen years ago; Bharatma kept the board and the book.</p>
+      <p><strong>The lesson from the board:</strong> in the Agnya chakra there is a ladder of bhakti that leads straight to moksha — and right next to it a snake of arrogance, because bhakti also brings a little egoistic arrogance. So even if your chart shows the Atma has reached the pinnacle in Meena amsha, that is not a guarantee. It means you have reached there; malefics and malefic aspects are snakes that can still pull you down and you start again. Equally, if you are not there, a ladder — an exchange — may still carry you up. And that exchange can be aspected by a node, a snake sitting there, biting you back down.</p>
+    </article>
+  </div>
+
+  <div class="voice rev">
+    <p>“There is nothing certain till you are enlightened. The only certainty is the presence of a Guru who will eventually lead you — not necessarily this lifetime.”</p>
+    <p class="attr">On how to hold all of it</p>
+  </div>
+</section>
+
+<!-- ============ 3. DISSOLUTION ============ -->
+<section id="dissolution">
+  <div class="col sec-head rev">
+    <p class="eyebrow">The most important house of all</p>
+    <h2>12th from Karakamsha</h2>
+    <p class="lede">The Atma Karaka represents your <span class="sk">agyan</span> — your ignorance. The rashi it sits in <em>changes</em> that ignorance but never dissolves it. The only thing with the ability to dissolve it completely is the 12th from Karakamsha. Its graha, its dignity, its natural status tell you whether this ignorance gets dissolved at all.</p>
+  </div>
+
+  <div class="col body-col rev">
+    <h3 style="font-size:22px">What actually dissolves things</h3>
+    <p>He worked it out through the elements, out loud. Water dissolves what is saline or sugary — a lot of karma is like that — but plastic, wood, metal will sit in it for a very long time. Air depletes earth, slowly, and takes long. Fire dissolves immediately. That is why fire is called <span class="sk">Pavaka</span>, the purifier: the one that purifies by dissolving impurities. That is also why <span class="sk">tapah</span> is done by living with, and igniting, five kinds of fire within us.</p>
+    <p>So a <strong>fiery graha in the 12th from Karakamsha</strong> gives a good possibility of dissolution. But a fiery graha in a watery sign — the fire is not lit properly. In an airy sign — too much air, the fire is unsteady. <strong>A fiery graha in a fiery sign works fantastic.</strong></p>
+  </div>
+
+  <div class="col rev" style="margin-top:24px">
+    <div class="ladder">
+      <div class="rung">
+        <span class="who">Water</span>
+        <span class="what">Dissolves what is saline or sugary. Not plastic, not wood, not metal.</span>
+        <span class="meter"><i style="width:22%"></i></span>
+      </div>
+      <div class="rung">
+        <span class="who">Air</span>
+        <span class="what">Cannot dissolve. Depletes earth, slowly, over a long time.</span>
+        <span class="meter"><i style="width:14%"></i></span>
+      </div>
+      <div class="rung">
+        <span class="who">Sun's fire</span>
+        <span class="what"><span class="sk">Jatharagni</span>, the digestive fire — fasting. Dissolves physical toxins and what sits on the border of subtle and physical. Not all karma: the Buddha fasted for years and was enlightened only after he ate — rice and salt from a village woman.</span>
+        <span class="meter"><i style="width:44%"></i></span>
+      </div>
+      <div class="rung">
+        <span class="who">Mars' fire</span>
+        <span class="what">The fire of ambition. Destroys lethargy and a great deal else — but while ambition is lit, how can desire be let go? Not the final thing.</span>
+        <span class="meter"><i style="width:62%"></i></span>
+      </div>
+      <div class="rung final">
+        <span class="who">Ketu's fire</span>
+        <span class="what">The last fire. Turns everything into <strong>smoke and ash</strong> — not selectively; whatever enters it is gone, in the grosser world and the subtler world both. This is why Ketu Maharaj is <span class="sk">Moksha Karaka</span>.</span>
+        <span class="meter"><i style="width:100%"></i></span>
+      </div>
+    </div>
+    <figcaption>“Remember this. It will be a very useful statement when you go deeper into spiritual Jyotish.”</figcaption>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:34px">
+    <p><strong>Ketu transiting your Moon:</strong> you feel everything shattering, your world shattered — unless you have already given up this world from your heart. Say “this is not mine” and Ketu Maharaj will not touch it. Say “mine, mine, mine,” and everything burns.</p>
+    <p>An <strong>exalted graha</strong> in the 12th from Karakamsha shows the person going into that kind of realm at a higher level. <strong>Conjunction or exchange with Ketu</strong> — you turn into a <span class="sk">Devanshu</span>. And Atma Karaka exalted shows you are not an ordinary soul: great <span class="sk">sankalpa shakti</span>, great willpower. Exalted and Vargottama is better; exalted, Vargottama and in Pushkaramsha — fantastic.</p>
+  </div>
+
+  <div class="col rev" style="margin-top:26px">
+    <article class="card" style="border-color:var(--gold)">
+      <span class="lab">His own reality check</span>
+      <h3>One in forty-eight should be enlightened. They are not.</h3>
+      <p>Parashara says: Ketu Maharaj in a fiery sign in the 12th from Atma Karaka. But if that alone were enough, every 12th person would be enlightened. He has seen plenty of people — his own extended family, people he knows personally — with Ketu there and nothing spiritual about their lives; mildly religious at most.</p>
+      <p>So run the arithmetic: Ketu in the 12th from Atma Karaka is roughly one in twelve. Three of the twelve signs are fiery, so a fiery one is about <strong>one in forty-eight</strong>. “In this class there should be ten enlightened people by now.” There aren't.</p>
+      <p><strong>The method, not the rejection:</strong> we cannot deny the Rishis' words — we follow and honour them, and we also look for other clues. Assess every rule practically. Never apply a sutra in isolation.</p>
+    </article>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:26px">
+    <p>If there is no graha in the 12th from Karakamsha, look at the drishti on it — and use <strong>rashi drishti</strong> as well, not only graha drishti. If that is also weak, the analysis widens: the 5th house, the 9th house, and overall the 10th and 4th of Navamsha.</p>
+  </div>
+</section>
+
+<!-- ============ 4. ISHTA DEVATA ============ -->
+<section id="ishta">
+  <div class="col sec-head rev">
+    <p class="eyebrow">What that whole analysis is for</p>
+    <h2>Finding your Ishta Devata</h2>
+    <p class="lede">Analysed together, the 12th from Karakamsha tells you which divine energy to align with — the one who leads you towards emancipation. <span class="sk">Ishta</span> means favourite: the one who is your favourite, or whose favourite you are. Your guiding angel, who takes care of you materially and spiritually, throughout life.</p>
+  </div>
+
+  <div class="col body-col rev">
+    <p><strong>How to weigh it:</strong> highest importance to the graha sitting in that house. If several, the strongest of them. If one graha sits there and others aspect, take the drishti too. Then the rashi — a male or female rashi points to the same divinity in masculine or feminine form. It is all calculation and analysis; Jagannatha Hora will not deduce it for you.</p>
+  </div>
+
+  <div class="col rev" style="margin-top:24px">
+    <div class="card">
+      <span class="lab">The simpler answers — from the notes &amp; resources section</span>
+      <dl class="defs" style="margin-top:6px">
+        <div class="def"><dt>Surya<small>Sun</small></dt><dd>Bhagwan Shiv</dd></div>
+        <div class="def"><dt>Chandra<small>Moon</small></dt><dd>Ma Gauri</dd></div>
+        <div class="def"><dt>Budha<small>Mercury</small></dt><dd>Bhagwan Vishnu</dd></div>
+        <div class="def"><dt>Guru<small>Jupiter</small></dt><dd>Guru — worship the Guru <em>as</em> Guru. Not Krishna in your Guru, not Shiva in your Guru. That Guru energy itself.</dd></div>
+        <div class="def"><dt>Shukra<small>Venus</small></dt><dd>Mata Lakshmi</dd></div>
+        <div class="def"><dt>Shani<small>Saturn</small></dt><dd>Chamundeshwari Devi — or Hanumanji, sometimes</dd></div>
+        <div class="def"><dt>Mangal<small>Mars</small></dt><dd>Kartikeya Swami or Hanumanji, whichever you feel aligned with</dd></div>
+      </dl>
+      <p style="margin-top:16px">There are many forms associated with each graha, and the full picture needs the whole analysis. His example: Mars in the 12th from Karakamsha with a strong Jupiter drishti on it shows a <em>brahmachari</em> divinity carrying Guru shakti — a brahmachari Guru — so following Gurudev is the right thing there.</p>
+    </div>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:26px">
+    <p><strong>Then build the connection.</strong> Not taking a mantra and chanting it blindly — know them, read about them, think about them. And if you end up choosing the wrong Ishta Devata, don't worry: they are Devatas, conscious divine energies. They will hold your hand and hand you over to your actual Ishta Devata. You will find the path eventually, and if your chart says you must move here and there for a while, you will.</p>
+    <p><strong>Guru as the window.</strong> Gurudev is the Ishta Devata for everyone — but people see different divinity through him. Some see Shiva, some Narayana, some Krishna, some Devi, and in Navratri someone sees Ganapati. The Guru is just a window, a blank space through which different flavours of divinity keep expressing and gracing our lives. The question is which flavour <em>you</em> align with.</p>
+    <div class="voice">
+      <p>“Do not use AI to understand your Ishta Devata. It comes as an inspiration from within — I rely more on my intuitive ability there than on calculation. For that you have to grow in sattva.”</p>
+      <p class="attr">Answering in the Q&amp;A</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. GRAHAS IN NAVAMSHA ============ -->
+<section id="grahas">
+  <div class="col sec-head rev">
+    <p class="eyebrow">The slide, unpacked</p>
+    <h2>Grahas in Navamsha — five readings</h2>
+    <p class="lede">Five ways a graha's dignity moves once you look at where it landed in the ninth division. Don't overstress the terminology; know that each one adds beneficence or maleficence to the graha.</p>
+  </div>
+
+  <div class="col rev">
+    <dl class="defs">
+      <div class="def">
+        <dt>Shubhamsa / Papamsa</dt>
+        <dd>In the rashi of a natural benefic → <strong>Shubhamsa</strong>; the more grahas there, the better. In the rashi of a natural malefic → <strong>Papamsa</strong>.</dd>
+      </div>
+      <div class="def">
+        <dt>Bhavatmaka Navamsha</dt>
+        <dd>Which <em>bhava</em> the graha has effectively gone into. More grahas in Kendramsa, Konamsa, Labhamsa, Bhagyamsa, Lagnamsa → better results. Worked through below.</dd>
+      </div>
+      <div class="def">
+        <dt>Ucchamsa</dt>
+        <dd>The graha's dignity in Navamsha. If it goes into its exaltation rashi in D9, that is Ucchamsa and it improves the graha's dignity.</dd>
+      </div>
+      <div class="def">
+        <dt>Same tattva</dt>
+        <dd>In trines from its D1 position — same element. <strong>Motivation is charged.</strong> He calls this a second-grade Vargottama.</dd>
+      </div>
+      <div class="def">
+        <dt>Same mode</dt>
+        <dd>In kendra from its D1 position — same modality. Fuels the graha's <strong>creation</strong> (cardinal), <strong>sustenance</strong> (fixed) or <strong>transformation</strong> (dual) ability.</dd>
+      </div>
+    </dl>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:38px">
+    <h3 style="font-size:22px">Bhavatmaka Navamsha — the one move to learn</h3>
+    <p>This is not a comparison of house-to-house. Take the graha's <em>rashi in the Navamsha chart</em>, then find that same rashi in your D1 chart and see which bhava it occupies. That bhava names the amsha.</p>
+    <div class="flow">
+      <span class="chip">graha's rashi in D9</span>
+      <span class="arrow">→</span>
+      <span class="chip">find that rashi in D1</span>
+      <span class="arrow">→</span>
+      <span class="chip">which bhava is it?</span>
+      <span class="arrow">→</span>
+      <span class="chip hot">that is the amsha</span>
+    </div>
+  </div>
+
+  <div class="col rev" style="margin-top:22px">
+    <div class="grid g2">
+      <article class="ex">
+        <p class="top">Example · Mars</p>
+        <div class="rows">
+          <div class="row"><b>D1 Lagna</b><span>Sagittarius</span></div>
+          <div class="row"><b>Mars in D1</b><span>Leo · 5th</span></div>
+          <div class="row"><b>Mars in D9</b><span>Sagittarius</span></div>
+          <div class="row"><b>Sagittarius in D1</b><span>the Lagna</span></div>
+        </div>
+        <p class="out">Lagnamsa</p>
+      </article>
+
+      <article class="ex">
+        <p class="top">Example · Mars, Vargottama</p>
+        <div class="rows">
+          <div class="row"><b>Mars in D1</b><span>Sagittarius · 7th</span></div>
+          <div class="row"><b>Mars in D9</b><span>Sagittarius · 1st</span></div>
+          <div class="row"><b>Sagittarius in D1</b><span>7th house</span></div>
+        </div>
+        <p class="out">Saptamsa — a Kendramsa. Vargottama and in kendra: very nice.</p>
+      </article>
+
+      <article class="ex">
+        <p class="top">Example · Venus</p>
+        <div class="rows">
+          <div class="row"><b>Venus in D1</b><span>Aquarius · 8th</span></div>
+          <div class="row"><b>Venus in D9</b><span>Libra</span></div>
+          <div class="row"><b>Libra in D1</b><span>4th house</span></div>
+        </div>
+        <p class="out">Chaturthamsa — also a Kendramsa. Good.</p>
+      </article>
+
+      <article class="ex">
+        <p class="top">Example · Jupiter</p>
+        <div class="rows">
+          <div class="row"><b>D1 Lagna</b><span>Scorpio</span></div>
+          <div class="row"><b>Jupiter in D1</b><span>Sagittarius · 2nd</span></div>
+          <div class="row"><b>Jupiter in D9</b><span>Leo</span></div>
+          <div class="row"><b>Leo in D1</b><span>10th house</span></div>
+        </div>
+        <p class="out">Dashamamsa, also called Karma Amsha — a Kendra.</p>
+      </article>
+
+      <article class="ex">
+        <p class="top">Example · Mars, gone down</p>
+        <div class="rows">
+          <div class="row"><b>Mars in D1</b><span>Taurus · 6th</span></div>
+          <div class="row"><b>Mars in D9</b><span>Cancer · 9th</span></div>
+          <div class="row"><b>Cancer in D1</b><span>8th house</span></div>
+        </div>
+        <p class="out bad">Ashtamamsa — also called Naidhanamsa, the death-inflicting house. Mars in the 6th was good; in Cancer it is not, and this brings its dignity further down.</p>
+      </article>
+
+      <article class="ex">
+        <p class="top">Example · Venus, same tattva</p>
+        <div class="rows">
+          <div class="row"><b>Venus in D1</b><span>Aries · 6th</span></div>
+          <div class="row"><b>Venus in D9</b><span>Sagittarius</span></div>
+          <div class="row"><b>Relationship</b><span>trine · both fiery</span></div>
+        </div>
+        <p class="out">Same tattva — second-grade Vargottama. Even looking like Maranakaraka Sthana, the motivation for luxury, comfort, beauty, aesthetics, design runs high, and motivation makes you act.</p>
+      </article>
+    </div>
+    <figcaption>The six placements worked out live in class, with the students' own charts.</figcaption>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:30px">
+    <p><strong>The rule that comes out of it:</strong> if the graha lands in a Kendra, Kona, the 11th, the 9th or the Lagna → better results, dignity goes up. In the <strong>6th, 8th or 12th</strong> → dignity goes down.</p>
+    <p><strong>One more he almost forgot:</strong> if a graha sits in a rashi in your Lagna kundali, and in the <em>same rashi</em> in Navamsha another graha is sitting, the second one is fuelling the first from the subtle. Jupiter in Simha in D1, Venus in Simha in D9 — when you teach (Jupiter's expression), your creativity is feeding the way you present it, the aesthetics of it. The top layer and the bottom layer, one supporting the other.</p>
+  </div>
+</section>
+
+<!-- ============ 6. KHARA ============ -->
+<section id="khara">
+  <div class="col sec-head rev">
+    <p class="eyebrow">Everyone flees from this one</p>
+    <h2>The 64th Navamsha — Kharamsa</h2>
+    <p class="lede">The whole circle has 108 padas. Count 64 padas from your Lagna pada: seven rashis take you to 63, so the 64th always lands on the <strong>same pada of your 8th rashi</strong>. <span class="sk">Khara</span> means mischievous.</p>
+  </div>
+
+  <div class="col rev scroll-x">
+    <figure>
+      <svg viewBox="0 0 720 190" width="720" height="190" role="img" aria-label="Diagram: the Lagna sits in a numbered pada of its rashi; the 64th pada is the same numbered pada of the 8th rashi">
+        <defs>
+          <linearGradient id="gA" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="var(--lilac)"/><stop offset="100%" stop-color="var(--blush)"/>
+          </linearGradient>
+        </defs>
+        <text x="0" y="16" fill="var(--muted)" font-family="Karla, sans-serif" font-size="12" letter-spacing="2">YOUR LAGNA RASHI · 9 PADAS</text>
+        <g>
+          <rect x="0" y="28" width="720" height="40" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+          <rect x="400" y="28" width="80" height="40" rx="10" fill="url(#gA)" stroke="var(--rose)"/>
+          <text x="440" y="53" text-anchor="middle" fill="var(--ink)" font-family="Fraunces, serif" font-size="16" font-weight="600">6</text>
+          <text x="40" y="53" text-anchor="middle" fill="var(--muted)" font-family="Fraunces, serif" font-size="15">1</text>
+          <text x="120" y="53" text-anchor="middle" fill="var(--muted)" font-family="Fraunces, serif" font-size="15">2</text>
+          <text x="200" y="53" text-anchor="middle" fill="var(--muted)" font-family="Fraunces, serif" font-size="15">3</text>
+          <text x="280" y="53" text-anchor="middle" fill="var(--muted)" font-family="Fraunces, serif" font-size="15">4</text>
+          <text x="360" y="53" text-anchor="middle" fill="var(--muted)" font-family="Fraunces, serif" font-size="15">5</text>
+          <text x="520" y="53" text-anchor="middle" fill="var(--muted)" font-family="Fraunces, serif" font-size="15">7</text>
+          <text x="600" y="53" text-anchor="middle" fill="var(--muted)" font-family="Fraunces, serif" font-size="15">8</text>
+          <text x="680" y="53" text-anchor="middle" fill="var(--muted)" font-family="Fraunces, serif" font-size="15">9</text>
+        </g>
+        <path d="M440 74 C 440 104, 440 104, 440 118" stroke="var(--rose)" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+        <text x="452" y="102" fill="var(--rose)" font-family="Karla, sans-serif" font-size="12">same pada number →</text>
+        <text x="0" y="138" fill="var(--muted)" font-family="Karla, sans-serif" font-size="12" letter-spacing="2">YOUR 8TH RASHI · 9 PADAS</text>
+        <g>
+          <rect x="0" y="148" width="720" height="40" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+          <rect x="400" y="148" width="80" height="40" rx="10" fill="url(#gA)" stroke="var(--rose)"/>
+          <text x="440" y="173" text-anchor="middle" fill="var(--ink)" font-family="Fraunces, serif" font-size="15" font-weight="700">64th</text>
+        </g>
+      </svg>
+      <figcaption>If the Lagna is the 6th pada of its rashi, the Kharamsa is the 6th pada of the 8th rashi — 16°40′ to 20°.</figcaption>
+    </figure>
+  </div>
+
+  <div class="col rev" style="margin-top:30px">
+    <div class="grid g2">
+      <article class="card">
+        <span class="lab">Worked in class</span>
+        <h3>Makara Lagna, 17°</h3>
+        <p>17° falls in the <strong>6th pada</strong> of the rashi (16°40′–20°). The 8th house holds Leo. So the 6th pada of Leo — <strong>16°40′ to 20° of Leo</strong> — is her Kharamsa. A papa graha transiting there brings something very difficult.</p>
+      </article>
+      <article class="card">
+        <span class="lab">Worked in class</span>
+        <h3>Pisces Lagna, 24°08′</h3>
+        <p>That is the <strong>8th pada</strong>. The 8th house holds Libra. So the 8th pada of Libra — <strong>23°20′ to 26°40′</strong> — is the Kharamsa. Even when the transit table says the star is fine and the chakra is fine, this particular pada will be difficult.</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:32px">
+    <h3 style="font-size:22px">The shortcut, when a graha is there</h3>
+    <p>Nakshatras can make the pada counting confusing, so use this instead: <strong>a graha in the 8th house of D1 which also goes to the 4th house of Navamsha is a Khara graha.</strong> Work out the maths yourself — he wasn't explaining it. The graha itself is Khara, not an easy graha: the karakatvas around it become permanently vulnerable, and it can cause real challenges.</p>
+  </div>
+
+  <div class="col rev" style="margin-top:20px">
+    <dl class="defs">
+      <div class="def"><dt>Khara graha<small>the graha itself</small></dt><dd>Constantly causing vulnerability. In the 8H of the rashi chart <em>and</em> the 4H of Navamsha.</dd></div>
+      <div class="def"><dt>Kharesha<small>the lord</small></dt><dd>The rashi lord of the Navamsha 4th house. It adds maleficence to that graha's existing dignity — by rulership alone, just like owning a 6th, 8th or 12th. Not every graha sitting in the D9 4th is a Khara graha; but the 4th lord is always Kharesha.</dd></div>
+      <div class="def"><dt>Khara transit<small>the trigger</small></dt><dd>A malefic — Rahu, Ketu, Shani, Mangal — transiting the 64th pada triggers events that can make life miserable. If it passes over a Khara graha sitting there, it escalates the problem. Always check for this when reading transits.</dd></div>
+      <div class="def"><dt>22nd Drekkana<small>the wider ground</small></dt><dd>A rashi split into three gives Drekkanas of 10° each (0–10, 10–20, 20–30). The 22nd counted from the Lagna's own Drekkana is the broader Khara territory — <strong>the Kharamsa is one single pada inside it.</strong> Like Pushkaramsha and Pushkar Bhaga: one wide, one exact.</dd></div>
+    </dl>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:30px">
+    <p><strong>And not only from the Lagna.</strong> Check the 64th pada from the Moon's pada, and then from every other graha. His example: if Mercury sits in the 64th Navamsha from Jupiter, Mercury acts as Khara <em>to</em> Jupiter. You want to study Jyotisha; your friends and cousins — Mercury's other significations — say “these are stupid things, leave it, let's go party.” Mercury is still needed for grasping power, so the intelligence is not against you; it works against you through its other karakatvas. That is how you learn which signification to read in which context.</p>
+    <div class="voice">
+      <p>“I have never taught this in first semester. I know it is too little, too early — but I wanted to share.”</p>
+      <p class="attr">Mid-lesson</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. NIDHANAMSA ============ -->
+<section id="nidhanamsa">
+  <div class="col sec-head rev">
+    <p class="eyebrow">Two names people confuse</p>
+    <h2>Nidhanamsa &amp; Ashtamamsa</h2>
+    <p class="lede">Some schools treat these as the same thing; others separate them, which is exactly where the confusion comes from. This is the split we follow — he settled it twice in the Q&amp;A.</p>
+  </div>
+
+  <div class="col rev">
+    <div class="grid g2">
+      <article class="card" style="border-color:var(--rose)">
+        <span class="lab">Counted from the chart</span>
+        <h3>Nidhanamsa</h3>
+        <p>Look at which rashi sits in the <strong>8th house of your D1</strong>. Any graha that goes into that rashi in Navamsha has gone into Nidhanamsa.</p>
+        <p><em>Taurus lagna → 8th rashi is Sagittarius → any graha in Sagittarius in D9 is in Nidhanamsa. Karka lagna → 8th rashi is Kumbha → the Moon (lagnesha) landing in Kumbha in D9 is the lagnesha in Nidhanamsa.</em></p>
+        <p>Can also be counted from the Moon, and one step further, from each graha.</p>
+      </article>
+      <article class="card" style="border-color:var(--violet)">
+        <span class="lab">Counted from itself</span>
+        <h3>Ashtamamsa</h3>
+        <p>Wherever the graha sits in the rashi chart, if in Navamsha it goes to the <strong>8th rashi from itself</strong>, that is Ashtamamsa.</p>
+        <p><em>Sun in Gemini going to Capricorn navamsha. Sun in Sagittarius going to Cancer navamsha. Jupiter in Sagittarius going to Cancer navamsha.</em></p>
+        <p>There are many ways people count Ashtamamsa; this is the one the text clearly indicates, so this is the one we follow.</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:30px">
+    <h3 style="font-size:22px">What Nidhanamsa actually does</h3>
+    <p>A graha sitting in your Bhagya supports your Bhagya; a graha in Karma supports your Karma. A graha in Nidhanamsa is <strong>empowering your 8th house</strong> — according to its own attributes. That brings more karmic retribution, more suffering, more misery. Multiple grahas there simply means more of the 8th house being strengthened.</p>
+    <p>But the same strength has another door: <strong>if you are spiritual, into occult, learning Jyotisha and the esoteric sciences, this can strengthen those studies.</strong> Nidhanamsa can also lead you there. Retrograde in Nidhanamsa → you make more effort, repeated effort, to come out of the misery or to learn. A yogakaraka going into Nidhanamsa simply loses some of the beneficence it holds — that's all.</p>
+  </div>
+
+  <div class="col rev" style="margin-top:32px; display:flex; flex-direction:column; gap:18px">
+    <div class="sutra">
+      <p class="dev">लग्नेशे निधनांशस्थे मूढे षष्ठगतेऽथवा ।<br>क्षुद्वाधया च मरणं बन्धुहीने महीतले ॥</p>
+      <p class="iast">lagneśe nidhanāṁśasthe mūḍhe ṣaṣṭhagate'thavā |<br>kṣudbādhayā ca maraṇaṁ bandhu-hīne mahītale ||</p>
+      <p class="mean">“If the lord of the Ascendant is situated in <b>Nidhanamsa</b>, is afflicted / combust, or is situated in the sixth house, there is death through hunger, or death upon the earth without relatives.”</p>
+      <p class="caution"><span class="tag">His reading</span><span>The 6th house rashi in Navamsha counts too, not only the 8th. And <span class="sk">mūḍhe</span> is where the schools split: some translate it as combust, hidden by the Sun's rays; others as dumbstruck, frozen, stupefied — which can come through combustion, or through affliction, or other means. <strong>“I was petrified when I saw this in my own chart.”</strong> Then he researched: Indira Gandhi had it, Mahatma Gandhi something similar — both assassinated, both possibly not surrounded by immediate family at the end. But the situation was not what the verse literally describes. Do not take it as written.</span></p>
+    </div>
+
+    <div class="sutra">
+      <p class="dev">लग्नेशे निधनांशस्थे लग्नांशे निधनेश्वरे ।<br>पापयुक्ते तदा जातः पञ्चाशद्वर्षजीवितः ॥</p>
+      <p class="iast">lagneśe nidhanāṁśasthe lagnāṁśe nidhaneśvare |<br>pāpayukte tadā jātaḥ pañcāśad-varṣa-jīvitaḥ ||</p>
+      <p class="mean">“If the lord of the Ascendant is in <b>Nidhanamsa</b>, and the lord of the 8th house is in <b>Lagnamsa</b>, and the two are associated with malefics, then the native lives for fifty years.”</p>
+      <p class="caution"><span class="tag">His reading</span><span>Such a bold statement to make. Many texts talk about death like this — do not trust anyone. He has tested many of these theories and algorithms and most of them do not work. Know these as contributors to longevity; don't take them at face value.</span></p>
+    </div>
+
+    <div class="sutra">
+      <p class="dev">निधनांशो धने जीवे नीचांशस्थे निशाकरे ।<br>आषोडशाब्दपर्यन्तमेकयोगफलं स्मृतम् ॥</p>
+      <p class="iast">nidhanāṁśo dhane jīve nīcāṁśasthe niśākare |<br>ā-ṣoḍaśābda-paryantam eka-yoga-phalaṁ smṛtam ||</p>
+      <p class="mean">“When Jupiter is in the 2nd house in <b>Nidhanamsa</b> and the Moon is in its debilitation Navamsha, the result of <b>Eka-yoga</b> is said to continue up to sixteen years.”</p>
+      <p class="caution"><span class="tag">Decoded</span><span><span class="sk">jīve</span> = Jupiter. <span class="sk">dhane</span> = the 2nd house. <span class="sk">niśākare</span> = “the one who causes the night” — the Moon, poetically. <span class="sk">ṣoḍaśa</span> = sixteen. Eka-yoga is the yoga of poverty: sixteen years of it. Three words carrying three conditions at once.</span></p>
+    </div>
+
+    <div class="sutra">
+      <p class="dev">निधनांशगतत्वेन परस्त्रीसङ्गपापवान् ।</p>
+      <p class="iast">nidhanāṁśagatatvena parastrī-saṅga-pāpavān |</p>
+      <p class="mean">“By being situated in <b>Nidhanamsa</b>, the native becomes sinful through association with another man's woman.” — and the slide was corrected live: this is the <b>7th lord</b> in Nidhanamsa, not Jupiter.</p>
+      <p class="caution"><span class="tag">Careful</span><span>From the Devakeralam, inside a series of shlokas. “If you start guiding people on this basis alone, this can break many families.” A yoga of promiscuity, yes — never in isolation. The marriage chapter next semester is being extended to handle this properly.</span></p>
+    </div>
+
+    <div class="sutra">
+      <p class="dev">युग्मे मकरांशे सूर्ये चापे कर्कटांशगे ।<br>मीने तुलांशगे कन्ये मेषांशे स्वल्पमायुषः ॥</p>
+      <p class="iast">yugme makarāṁśe sūrye cāpe karkaṭāṁśage |<br>mīne tulāṁśage kanye meṣāṁśe svalpam āyuṣaḥ</p>
+      <p class="mean">“If the Sun is in Capricorn Navamsha while in Gemini, in Cancer Navamsha while in Sagittarius, in Libra Navamsha while in Pisces, or in Aries Navamsha while in Virgo — short life.”</p>
+      <p class="caution"><span class="tag">Simplified</span><span><span class="sk">yugma</span> = couple = Mithuna. Every pair listed is the Sun going to the <strong>8th from itself</strong> in Navamsha — this is Ashtamamsa. Decoded plainly: <strong>Sun in a dual sign in D1 going into a cardinal sign in the 8th from itself in Navamsha</strong> causes short life. The Rishis complicated it because they were teaching Nidhanamsa and Ashtamamsa together.</span></p>
+    </div>
+
+    <div class="sutra">
+      <p class="dev">चापे जीवे कुलीरांशे नीचैः सिंहनवांशके ।<br>मीने तुलांशके दुःखी विद्या सौख्यविहीनवान् ॥</p>
+      <p class="iast">cāpe jīve kulīrāṁśe nīcaiḥ siṁhanavāṁśake |<br>mīne tulāṁśake duḥkhī vidyā-saukhyavihīnavān ||</p>
+      <p class="mean">“Jupiter in Sagittarius in Cancer Navamsha; debilitated in Capricorn in Leo Navamsha; or in Pisces in Libra Navamsha — causes sorrow and deprivation of learning and happiness.”</p>
+    </div>
+
+    <div class="sutra">
+      <p class="dev">अष्टमांशं परित्यज्य जीवे धनगते सुखी ।<br>विद्यावान् मधुराभाषी विनीतो धर्मवत्सलः ॥</p>
+      <p class="iast">aṣṭamāṁśaṁ parityajya jīve dhanagate sukhī |<br>vidyāvān madhurābhāṣī vinīto dharmavatsalaḥ ||</p>
+      <p class="mean">“When Jupiter is in the 2nd house, <b>having avoided Ashtamamsa</b>, the native is happy, learned, sweet-spoken, well-mannered and devoted to dharma.”</p>
+      <p class="caution"><span class="tag">The catch</span><span>Don't see Jupiter in the 2nd and say “all good, fantastic.” Wait — first check it has not gone to the 8th sign from itself in Navamsha. Jupiter in Gemini must not be in Capricorn navamsha. Only then does the good result stand.</span></p>
+    </div>
+
+    <div class="sutra">
+      <p class="dev">मीने तुलांशके केतौ दारसौख्यविहीनवान् ।<br>परस्त्रीसङ्गवान् कामी मूत्रकृच्छ्रपीडितः ॥</p>
+      <p class="iast">mīne tulāṁśake ketau dāra-saukhyavihīnavān |<br>parastrī-saṅgavān kāmī mūtrakṛcchra-pīḍitaḥ ||</p>
+      <p class="mean">“When Ketu is in Pisces in Libra Navamsha, the native is deprived of marital happiness; he associates with other men's women, is lustful, and suffers from urinary disorders.”</p>
+      <p class="caution"><span class="tag">Note</span><span>Not from Maharishi Parashara — this is Devakeralam. And notice: it fits what we said about Ketu Maharaj also being the karaka of the husband in a woman's chart.</span></p>
+    </div>
+
+    <div class="sutra">
+      <p class="dev">लग्नाष्टमगते केतावष्टमांशे च संस्थिते ।<br>तद्दशान्तर्दशाकाले चोरा दृष्टिः क्वचित् क्वचित् ॥<br>धने राहु धनच्छेदः स्वदशान्तर्दशासु च ॥</p>
+      <p class="iast">lagnāṣṭamagate ketāv aṣṭamāṁśe ca saṁsthite |<br>tad-daśāntardaśā-kāle corā dṛṣṭiḥ kvacit kvacit ||<br>dhane rāhu dhanacchedaḥ sva-daśāntardaśāsu ca ||</p>
+      <p class="mean">“When Ketu is in the 8th from the Ascendant and situated in Ashtamamsa, during its Dasha and Antardasha there may be fear or experience of thieves from time to time. When Rahu is in the 2nd house, there is loss / severance of wealth during its own Dasha and Antardasha.”</p>
+      <p class="caution"><span class="tag">Why both</span><span>Ketu in the 8th puts Rahu in the 2nd — so one shloka covers the pair.</span></p>
+    </div>
+  </div>
+
+  <div class="voice rev">
+    <p>“When you approach these scriptural texts you have to be a little open-minded. If you stay stuck on the words as written — even with a correct translation, even knowing Sanskrit — it gets very difficult to move further in Jyotisha.”</p>
+    <p class="attr">The method for reading shlokas</p>
+  </div>
+</section>
+
+<!-- ============ 8. PURUSHARTHA ============ -->
+<section id="purushartha">
+  <div class="col sec-head rev">
+    <p class="eyebrow">A small technique with a large use</p>
+    <h2>What your consciousness is woven from</h2>
+    <p class="lede">Open Jagannatha Hora and simply read the nakshatra <em>pada numbers</em> of the ten bodies — from Lagna through Ketu, and no further; no Gulika, no Mandi. Each pada number names a purushartha, and the tally shows the proportion in which you are made.</p>
+  </div>
+
+  <div class="col rev">
+    <div class="tally" id="tally">
+      <div class="pot" data-p="dharma">
+        <span class="pad">Pada 1</span>
+        <h4>Dharma</h4>
+        <p class="desc">These grahas support your dharma. Four or five here — fantastic, work on dharma.</p>
+        <div class="bar"><i></i></div>
+        <div class="counter">
+          <button type="button" data-d="-1" aria-label="Fewer grahas in dharma pada">−</button>
+          <output>0</output>
+          <button type="button" data-d="1" aria-label="More grahas in dharma pada">+</button>
+        </div>
+      </div>
+      <div class="pot" data-p="artha">
+        <span class="pad">Pada 2</span>
+        <h4>Artha</h4>
+        <p class="desc">Resource building. More grahas here — do not hesitate. Earn money, be resourceful.</p>
+        <div class="bar"><i></i></div>
+        <div class="counter">
+          <button type="button" data-d="-1" aria-label="Fewer grahas in artha pada">−</button>
+          <output>0</output>
+          <button type="button" data-d="1" aria-label="More grahas in artha pada">+</button>
+        </div>
+      </div>
+      <div class="pot" data-p="kama">
+        <span class="pad">Pada 3</span>
+        <h4>Kama</h4>
+        <p class="desc">Fulfilment of desire, fun, frolic, joy. Not bad at all — you are the life of the party. It can be done in a satvik way: organise satsang, dance along with everyone.</p>
+        <div class="bar"><i></i></div>
+        <div class="counter">
+          <button type="button" data-d="-1" aria-label="Fewer grahas in kama pada">−</button>
+          <output>0</output>
+          <button type="button" data-d="1" aria-label="More grahas in kama pada">+</button>
+        </div>
+      </div>
+      <div class="pot" data-p="moksha">
+        <span class="pad">Pada 4</span>
+        <h4>Moksha</h4>
+        <p class="desc">Your own space, your own freedom — my time, my space. Do not read this as “very good person.”</p>
+        <div class="bar"><i></i></div>
+        <div class="counter">
+          <button type="button" data-d="-1" aria-label="Fewer grahas in moksha pada">−</button>
+          <output>0</output>
+          <button type="button" data-d="1" aria-label="More grahas in moksha pada">+</button>
+        </div>
+      </div>
+    </div>
+    <p class="tally-foot"><span>Tap to tally your own ten bodies — Lagna through Ketu.</span><span id="tallyTotal">0 of 10 placed</span></p>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:30px">
+    <p><strong>Too much moksha pada</strong> and such people are very difficult to live with: they need so much “me time” you will never get them. He has seen people who, after marriage, don't want husband or wife entering their room — then why did you get married? <strong>Zero moksha pada</strong> and there are no boundaries at all: sharing everything with everyone, not minding using someone else's toothbrush, six or seven boys in one bed in a hostel lying on each other all night.</p>
+    <p><strong>Consider consciousness a fabric,</strong> and the purusharthas the threads woven into it. Look at the ten bodies and you see what percentage of which thread went into you. Once you know what you are made of, you know what to put yourself to. A cotton cloth will be used for cleaning; a silk cloth will be used on the puja altar. There is no good or bad in it.</p>
+    <p><strong>And don't correct people out of their own weave.</strong> If someone shows a lot of kama purushartha, let them — otherwise their life passes and they say “I did nothing I wanted to do,” because they lived as society influenced them and not as their nature. He described parents whose son has six grahas in moksha: he loves Gurudev, Gurudev loves him, but he will not come along, will not follow the programme. These are free-spirited people. You cannot bind them; they need their own world.</p>
+  </div>
+</section>
+
+<!-- ============ 9. SHAKTI ============ -->
+<section id="shakti">
+  <div class="col sec-head rev">
+    <p class="eyebrow">For guiding someone on work</p>
+    <h2>Brahma, Vishnu, Rudra — read in Navamsha</h2>
+    <p class="lede">Again take the ten bodies, and see which third of the zodiac they fall into <em>in the Navamsha chart</em>. It tells you which shakti you actually carry — and, before a business, what kind of partner you need.</p>
+  </div>
+
+  <div class="col rev">
+    <div class="bands">
+      <div class="band b1">
+        <span class="r">Rashis 1 – 4</span>
+        <div><h4>Brahma shakti · creation</h4><p>You can create new things. Five bodies here and you are a creative engine — but sustenance is not your cup of tea.</p></div>
+      </div>
+      <div class="band b2">
+        <span class="r">Rashis 5 – 8</span>
+        <div><h4>Vishnu shakti · sustenance</h4><p>Holding, maintaining, managing what exists.</p></div>
+      </div>
+      <div class="band b3">
+        <span class="r">Rashis 9 – 12</span>
+        <div><h4>Rudra shakti · dissolution</h4><p>Very strong in army, police, spies. Fits businesses of disposal, demolition, shredding.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:26px">
+    <p><strong>His worked case:</strong> three bodies in Brahma, one in Vishnu, five or six in Rudra. That person creates about 30%, maintains 10%, and dissolves 60% of it. How can they build an empire — unless the nature of the business <em>is</em> destruction?</p>
+    <p><strong>The practical use:</strong> make an informed decision and partner with someone whose forte is sustenance. He notes that creators usually find good managers irritating — “what kind of dumb person is this, why can't he do this?” — and there is a lot of difference of opinion. But if those two can partner, they can really build a big empire.</p>
+    <p>Career is an advanced topic to come. As with everything else here: these are add-ons. When twenty or thirty factors are brought together and you are totally confused which way to go, these small factors show the inclination — assistant knowledge serving the main frame.</p>
+  </div>
+</section>
+
+<!-- ============ 10. QA ============ -->
+<section id="qa">
+  <div class="col sec-head rev">
+    <p class="eyebrow">Answered in the room</p>
+    <h2>From the Q&amp;A</h2>
+    <p class="lede">Several of these are things that only came out because someone asked.</p>
+  </div>
+
+  <div class="col qa rev">
+    <details class="q">
+      <summary>Two babies born in the same hospital, rooms side by side — same life?</summary>
+      <div class="a">
+        <p>It cannot happen in the same moment. If at all, there has to be a difference of <strong>24 seconds — one vighati</strong>. Only <em>one human soul can come in each vighati</em>. An animal soul can, but only one human soul per vighati. “A universal law which nobody knows.”</p>
+        <p>And the vighati changes with space: every <strong>27–28 kilometres</strong> the local time shifts by that 24 seconds. So two babies can be born in the same second if they are that far apart. Watch a population clock — five numbers pop up at once, and they are in different parts of the world.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Does Arudha Lagna exist in Navamsha too?</summary>
+      <div class="a">
+        <p>Yes. Arudha Lagna in the rashi chart is what <em>people</em> think of you — people are in the grosser world. In Navamsha, the energies are in the subtle world: it is what the <strong>Devatas</strong> think of you.</p>
+        <p>He added immediately that Arudha Lagna is a very deep concept and this was only a name being popped — nothing more has been taught yet.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Does drishti apply in the divisional charts?</summary>
+      <div class="a"><p>Yes — drishti applies in D9 as well. And where there is no graha to read, use <strong>rashi drishti</strong> too. That is how you go into deeper analysis.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Atma Karaka in the Navamsha Lagna — what does that mean?</summary>
+      <div class="a">
+        <p>Scripturally: Atma Karaka in the <strong>Lagna or the 7th house of Navamsha</strong> shows a person who rises to royalty. With it in the Lagna you are usually not born into a mediocre family at all — born with a silver spoon. In the 7th you may be born mediocre and rise to royalty.</p>
+        <p>The buts: is that graha clearly the Atma Karaka, or could a few minutes of birth-time difference change the Navamsha degrees and swap it? And it must be supported — dhana yogas, the Lagna rashi, the Atma Karaka's overall strength and status — because the Atma Karaka has to go into <em>some</em> bhava, and every sixth person does not become a king.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>My Atma Karaka is Vargottama, so the 12th from it is the same rashi in D1 and D9 — and empty. Anything?</summary>
+      <div class="a"><p>If the Atma Karaka is Vargottama that is simply how it will be, and Vargottama Atma Karaka is a good thing in itself. Empty of grahas is not empty: there is still a rashi, and there are drishtis falling on it. Use rashi drishti as well.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Ketu is in the 12th from my Atma Karaka in a fiery sign — but it's in the 8th house of Navamsha. Isn't the 8th bad?</summary>
+      <div class="a">
+        <p>Ketu Maharaj in the 8th house is good. Good <em>for spirituality</em> — and right now the context is spirituality, because you are asking about the 12th from Atma Karaka.</p>
+        <p>“When I say good or bad, you cannot apply it universally. The moment you say it is good for marriage, I'll say no, it is not.”</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Should the 64th Navamsha also be checked from Jupiter, Saturn and the rest?</summary>
+      <div class="a">
+        <p>It <em>should</em> be seen — whichever graha you look at, its significations get impacted by that gochara. But for now stay with the 64th Navamsha from the Sun and the Moon, because you experience things through your mind and your intellect, which is why Lagna and Moon lead in gochara.</p>
+        <p>“I'm teaching you how to crawl and you're asking me whether you'll also be able to ski when you climb the Himalayas.” After a year or two of confident gochara practice, go deeper.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Which Jagannatha Hora settings should we use?</summary>
+      <div class="a"><p><strong>Drik Siddhanta</strong>, which is the default — we are not dabbling in Surya Siddhanta for now. Beyond that: don't change any settings. There are thousands of them, and if you move things around he won't be able to help you find what you changed. Set to default and make only the changes he has shared.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Venus rules both my 4th and 9th — does that make the Gajakesari support condition?</summary>
+      <div class="a">
+        <p>No. One graha ruling both is not a combination. A yoga needs two energies meeting and focusing at one place — it takes two to tango. The karmic connection between the two rashis is always there, and rashis aspect each other, but that is a different matter; that alone is not a yoga.</p>
+        <p>And on reading your own chart: you know what Gajakesari does — is it manifesting in your life? Gurudev's own image for it, from a recent talk: be like a lion, not a cock running here and there. Lazy, but confident — knowing whatever has to come to me will come. If that faith and grace is there, the yoga is manifesting.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>How exact does the birth time need to be for all this?</summary>
+      <div class="a">
+        <p>Navamsha still gives you roughly <strong>±14 minutes</strong> to play with. The order of importance is rashi chart, Navamsha, then <strong>Shashtyamsha</strong> — one rashi in sixty. Beyond that, <strong>Nadi amsha</strong>: each navamsha broken into twelve, so one rashi in 108 pieces. Understand that sensitivity. Both are very important for tapping the supra-conscious level, the depth, the karmic account — and we do nothing with them, because we are not sure of the birth time.</p>
+        <p>On rectification: none of the techniques are 100% foolproof, and anyone claiming otherwise, he's not sure about. When a student's time had been shifted by about a minute and a half by her mentor purely from reading her career, and it then explained her Caesarean birth — he said rely on it, and as you learn more you will see for yourself that it was right.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Is the 12th from Karakamsha telling me whether I come back for the same ignorance?</summary>
+      <div class="a">
+        <p>There are factors first: you need a spiritual bent, the fire to actually move on this path. If those satisfy, this will definitely trigger it.</p>
+        <p>And you do not have only <em>one</em> ignorance. In this lifetime you have chosen to overcome this particular one. His key: <strong>any graha not forming a Mahapurusha yoga in your chart is a graha whose ignorance you are yet to overcome.</strong> If everything is exalted — Sri Ram's chart, Sri Krishna's, Gurudev's — things are different; you have already been there, and just one or two things remain.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Can a chart show the timing of death?</summary>
+      <div class="a">
+        <p>Very complicated, and most published techniques do not work. Even ascertaining short, medium or long longevity — with algorithms alone it fails. Jaimini Maharishi's triple-yoga technique is what many use for the broad band. He knows one or two techniques that work very well, but they need to be learned from someone who has mastered them; the teacher they brought last year declined, saying the students weren't ready. It is not in the curriculum, and might appear in the fourth semester if the right teacher and enough research come together. They are also exploring building an AI model around it — still work in progress.</p>
+        <p>“Everything you can think of, nature has already put into Jyotisha. You can figure it out, but you have to decode it — and nature is too smart: if too many things are decoded, nature changes the pattern. Sutras that applied a hundred years ago do not work any more, because nature has changed and society has evolved.”</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Are the ten Mahavidyas connected to the grahas?</summary>
+      <div class="a"><p>Yes — that was the whole reason Mahavidya was introduced in that lesson: for each graha's purification, the highest form of Mother Divine is the Mahavidyas.</p></div>
+    </details>
+  </div>
+
+  <div class="voice rev">
+    <p>“If you rely only on logic while learning Jyotish you will be utterly confused. Observe more, think less. I've seen students of ten, twelve years who still cannot read a chart properly — the reason is they rely only on logic.”</p>
+    <p class="attr">Closing advice</p>
+  </div>
+
+  <div class="col body-col rev">
+    <p>He was direct about what comes next: no new lesson is being added this semester, so these weeks are for revision and observation. The mock test link comes a week before the exam and the question paper is being rewritten — similar in kind to what seniors saw, not the same questions. Second semester changes gear entirely: combinations and results, the whole algorithm, never in isolation. From the third semester the internship begins — top-tier students join live consultations, recorded and on paper. And Navamsha itself does not end here: “Navamsha cannot be taught in three or four classes. We keep learning about it for the next two years.”</p>
+    <p><strong>And the standard he set for questions from now on:</strong> don't bring him two or three conditions and ask “what does this mean?” Bring your own understanding, and he will correct it if needed.</p>
+  </div>
+</section>
+
+<!-- ============ 11. CHEAT SHEET ============ -->
+<section id="sheet">
+  <div class="col sec-head rev">
+    <p class="eyebrow">Before the exam</p>
+    <h2>Quick reference</h2>
+    <p class="lede">Every term from this class, with the exact move that identifies it.</p>
+  </div>
+
+  <div class="col rev">
+    <div class="sheet scroll-x">
+      <table>
+        <thead><tr><th>Term</th><th>How to find it</th></tr></thead>
+        <tbody>
+          <tr><td>Karakamsha</td><td>The rashi holding the Chara Atma Karaka in D9.</td></tr>
+          <tr><td>12th from Karakamsha</td><td>Dissolution of the self. Read its graha, its dignity, its rashi tattva, the drishtis — and the 5th, 9th, 10th, 4th of D9 alongside.</td></tr>
+          <tr><td>Shubhamsa / Papamsa</td><td>Graha in D9 in a natural benefic's / malefic's rashi.</td></tr>
+          <tr><td>Bhavatmaka amsha</td><td>Take the graha's D9 rashi → find that rashi in D1 → its bhava names the amsha.</td></tr>
+          <tr><td>Kendramsa</td><td>Lands in the 1st, 4th, 7th, 10th. Named: Lagnamsa, Chaturthamsa, Saptamsa, Dashamamsa (Karma Amsha).</td></tr>
+          <tr><td>Konamsa · Bhagyamsa · Labhamsa</td><td>Trines · the 9th · the 11th. Dignity goes up.</td></tr>
+          <tr><td>Naidhanamsa (Bhavatmaka)</td><td>Lands in the 8th — the death-inflicting house. Dignity goes down, as with the 6th and 12th.</td></tr>
+          <tr><td>Ucchamsa</td><td>Graha goes into its exaltation rashi in D9.</td></tr>
+          <tr><td>Same tattva</td><td>D9 rashi is trinal to the D1 rashi — same element. Motivation charged; second-grade Vargottama.</td></tr>
+          <tr><td>Same mode</td><td>D9 rashi is in kendra from the D1 rashi. Fuels creation / sustenance / transformation.</td></tr>
+          <tr><td>Kharamsa (64th Navamsha)</td><td>The same pada number as the Lagna's, in the 8th rashi.</td></tr>
+          <tr><td>Khara graha</td><td>A graha in the 8H of D1 that also goes to the 4H of D9.</td></tr>
+          <tr><td>Kharesha</td><td>The rashi lord of the Navamsha 4th house. Adds maleficence by rulership alone.</td></tr>
+          <tr><td>22nd Drekkana</td><td>Drekkana = 10° third of a rashi. The 22nd from the Lagna's Drekkana is the wide Khara territory; the Kharamsa is one pada inside it.</td></tr>
+          <tr><td>Nidhanamsa</td><td>Graha in D9 sitting in the rashi that occupies your D1 8th house. Also read from the Moon, and from each graha.</td></tr>
+          <tr><td>Ashtamamsa</td><td>Graha goes into the 8th rashi <em>from itself</em> in Navamsha.</td></tr>
+          <tr><td>Purushartha padas</td><td>Nakshatra pada of the 10 bodies, Lagna → Ketu. 1 dharma · 2 artha · 3 kama · 4 moksha.</td></tr>
+          <tr><td>Brahma / Vishnu / Rudra shakti</td><td>Bodies in D9 rashis 1–4 / 5–8 / 9–12. Creation, sustenance, dissolution.</td></tr>
+          <tr><td>Subtle support</td><td>A graha in the same rashi in D9 as another graha's D1 rashi fuels that graha from below.</td></tr>
+          <tr><td>Vighati</td><td>24 seconds. One human soul per vighati; shifts by ~27–28 km of distance.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="om">ॐ</p>
+    <p>Notes from the 22 August class — the teacher's words only.<br>Jai Gurudev.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // reveal on scroll
+  var revs = document.querySelectorAll('.rev');
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:.05});
+    revs.forEach(function(el){ io.observe(el); });
+  } else {
+    revs.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // chapter scroll-spy
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.chapters a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  function spy(){
+    var y = window.scrollY + 140, cur = 0;
+    secs.forEach(function(s,i){ if(s.offsetTop <= y) cur = i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i === cur); });
+    var on = links[cur];
+    if (on && on.parentElement.parentElement.scrollWidth > on.parentElement.parentElement.clientWidth){
+      var nav = on.parentElement.parentElement;
+      var l = on.offsetLeft - nav.clientWidth/2 + on.clientWidth/2;
+      nav.scrollTo({left:l, behavior:'smooth'});
+    }
+  }
+  var tick = false;
+  window.addEventListener('scroll', function(){
+    if(tick) return; tick = true;
+    window.requestAnimationFrame(function(){ spy(); tick = false; });
+  }, {passive:true});
+  spy();
+
+  // purushartha tally
+  var pots = Array.prototype.slice.call(document.querySelectorAll('#tally .pot'));
+  var totalEl = document.getElementById('tallyTotal');
+  var counts = {};
+  function paint(){
+    var total = 0;
+    pots.forEach(function(p){ total += counts[p.dataset.p] || 0; });
+    pots.forEach(function(p){
+      var n = counts[p.dataset.p] || 0;
+      p.querySelector('output').textContent = n;
+      p.querySelector('.bar i').style.width = (total ? (n/Math.max(total,1))*100 : 0) + '%';
+    });
+    totalEl.textContent = total + ' of 10 placed';
+    try { localStorage.setItem('navamsha-purushartha', JSON.stringify(counts)); } catch(e){}
+  }
+  try {
+    var saved = localStorage.getItem('navamsha-purushartha');
+    if (saved) counts = JSON.parse(saved) || {};
+  } catch(e){ counts = {}; }
+  pots.forEach(function(p){
+    p.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click', function(){
+        var k = p.dataset.p;
+        var n = (counts[k] || 0) + parseInt(b.dataset.d, 10);
+        counts[k] = Math.max(0, Math.min(10, n));
+        paint();
+      });
+    });
+  });
+  paint();
+})();
+</script>
