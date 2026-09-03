@@ -1,0 +1,1414 @@
+<title>Five Houses, Deep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&family=Noto+Serif+Devanagari:wght@400;600&display=swap">
+
+<style>
+:root{
+  --ground:#FBF4F8;
+  --ground-2:#F5E8F1;
+  --paper:#FFFBFD;
+  --paper-2:#F9EFF5;
+  --ink:#3D1240;
+  --ink-soft:#5E2A63;
+  --muted:#8D6A94;
+  --line:#EAD6E4;
+  --line-soft:#F4E7EF;
+  --blush:#F7D3E4;
+  --lilac:#E1CCF7;
+  --orchid:#D8B6EC;
+  --peri:#C9D2F8;
+  --gold:#A9781F;
+  --gold-bright:#D9A93F;
+  --gold-soft:#F0D6A2;
+  --rose:#B2456F;
+  --violet:#6F3BB0;
+  --aubergine:#4A1550;
+  --jade:#5C8A7C;
+  --glow:rgba(160,90,180,.18);
+  --shadow-s:0 1px 2px rgba(61,18,64,.06);
+  --shadow:0 2px 6px rgba(61,18,64,.06), 0 18px 48px -22px rgba(61,18,64,.36);
+  --shadow-l:0 4px 14px rgba(61,18,64,.08), 0 34px 70px -28px rgba(61,18,64,.44);
+  --r:22px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#180A1E;
+    --ground-2:#220F2A;
+    --paper:#251032;
+    --paper-2:#2E1539;
+    --ink:#F8ECF8;
+    --ink-soft:#DFC9E6;
+    --muted:#AE92BA;
+    --line:#3F2450;
+    --line-soft:#341C42;
+    --blush:#6E3357;
+    --lilac:#4C2F72;
+    --orchid:#59346E;
+    --peri:#36386C;
+    --gold:#EFC978;
+    --gold-bright:#F7DC9E;
+    --gold-soft:#7C5C2C;
+    --rose:#F49CBE;
+    --violet:#C49CF2;
+    --aubergine:#2A0E33;
+    --jade:#8FBBAB;
+    --glow:rgba(240,190,120,.14);
+    --shadow-s:0 1px 2px rgba(0,0,0,.4);
+    --shadow:0 2px 6px rgba(0,0,0,.35), 0 20px 50px -24px rgba(0,0,0,.9);
+    --shadow-l:0 4px 16px rgba(0,0,0,.4), 0 36px 76px -30px rgba(0,0,0,1);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#180A1E;
+  --ground-2:#220F2A;
+  --paper:#251032;
+  --paper-2:#2E1539;
+  --ink:#F8ECF8;
+  --ink-soft:#DFC9E6;
+  --muted:#AE92BA;
+  --line:#3F2450;
+  --line-soft:#341C42;
+  --blush:#6E3357;
+  --lilac:#4C2F72;
+  --orchid:#59346E;
+  --peri:#36386C;
+  --gold:#EFC978;
+  --gold-bright:#F7DC9E;
+  --gold-soft:#7C5C2C;
+  --rose:#F49CBE;
+  --violet:#C49CF2;
+  --aubergine:#2A0E33;
+  --jade:#8FBBAB;
+  --glow:rgba(240,190,120,.14);
+  --shadow-s:0 1px 2px rgba(0,0,0,.4);
+  --shadow:0 2px 6px rgba(0,0,0,.35), 0 20px 50px -24px rgba(0,0,0,.9);
+  --shadow-l:0 4px 16px rgba(0,0,0,.4), 0 36px 76px -30px rgba(0,0,0,1);
+}
+
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:"Jost", ui-sans-serif, system-ui, sans-serif;
+  font-size:17px; font-weight:300; line-height:1.68;
+  -webkit-font-smoothing:antialiased;
+}
+/* aurora ground */
+body::before{
+  content:""; position:fixed; inset:-20%; z-index:-3; pointer-events:none;
+  background:
+    radial-gradient(36rem 28rem at 12% 10%, var(--orchid) 0%, transparent 60%),
+    radial-gradient(34rem 28rem at 88% 6%, var(--gold-soft) 0%, transparent 58%),
+    radial-gradient(46rem 36rem at 74% 58%, var(--lilac) 0%, transparent 58%),
+    radial-gradient(34rem 28rem at 16% 82%, var(--blush) 0%, transparent 60%),
+    radial-gradient(40rem 32rem at 48% 38%, var(--peri) 0%, transparent 55%),
+    radial-gradient(28rem 24rem at 62% 92%, var(--gold-soft) 0%, transparent 55%);
+  opacity:.6; animation:drift 52s ease-in-out infinite alternate;
+}
+@keyframes drift{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(2%,-1.5%,0) scale(1.06)}
+  100%{transform:translate3d(-1.5%,2%,0) scale(1.03)}
+}
+/* paper grain */
+body::after{
+  content:""; position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.05;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+}
+
+h1,h2,h3,h4{font-family:"Cormorant Garamond", Georgia, serif; font-weight:400; text-wrap:balance; margin:0; line-height:1.13}
+p{margin:0}
+strong{font-weight:500; color:var(--ink)}
+.sk{font-family:"Cormorant Garamond",Georgia,serif; font-style:italic; font-size:1.09em; color:var(--violet); font-weight:500}
+
+.wrap{max-width:1200px; margin:0 auto; padding:0 clamp(18px,4vw,48px)}
+.col{max-width:730px; margin:0 auto}
+.col-wide{max-width:960px; margin:0 auto}
+
+/* ============ RAIL ============ */
+.rail{position:fixed; left:22px; top:50%; transform:translateY(-50%); z-index:70; display:none}
+@media (min-width:1460px){ .rail{display:block} }
+.rail ol{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px}
+.rail a{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--muted); font-size:11.5px; letter-spacing:.08em}
+.rail i{width:7px; height:7px; border-radius:50%; border:1px solid var(--line); background:var(--paper); transition:all .3s; flex:none}
+.rail span{opacity:0; transform:translateX(-6px); transition:all .3s; white-space:nowrap}
+.rail a:hover span, .rail a.on span{opacity:1; transform:none}
+.rail a:hover i{border-color:var(--rose)}
+.rail a.on i{background:var(--rose); border-color:var(--rose); box-shadow:0 0 0 4px var(--glow)}
+.rail a.on{color:var(--ink)}
+.rail a:focus-visible{outline:2px solid var(--violet); outline-offset:3px; border-radius:6px}
+
+/* ============ HERO ============ */
+.hero{position:relative; padding:clamp(34px,6vw,64px) 0 clamp(36px,6vw,72px)}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,.82fr); gap:clamp(24px,5vw,64px); align-items:center}
+@media (max-width:900px){ .hero-grid{grid-template-columns:1fr; gap:28px} .hero-art{order:-1} }
+.eyebrow-line{display:flex; align-items:center; gap:12px; color:var(--rose); font-size:11.5px; letter-spacing:.3em; text-transform:uppercase; font-weight:500}
+.eyebrow-line::after{content:""; height:1px; flex:1; background:linear-gradient(90deg,var(--rose),transparent); opacity:.45}
+.hero h1{font-size:clamp(48px,9.4vw,104px); font-weight:300; letter-spacing:-.025em; margin:.2em 0 0}
+.hero h1 .it{
+  font-style:italic;
+  background:linear-gradient(96deg,var(--violet) 0%,var(--rose) 26%,var(--gold-bright) 52%,var(--violet) 78%,var(--rose) 100%);
+  background-size:280% 100%;
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  animation:sheen 16s ease-in-out infinite;
+}
+@keyframes sheen{ 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+.hero .sub{font-family:"Cormorant Garamond",Georgia,serif; font-style:italic; font-size:clamp(20px,2.9vw,28px); font-weight:300; color:var(--ink-soft); max-width:30ch; margin-top:.5em; line-height:1.4}
+.hero-meta{margin-top:clamp(22px,4vw,34px); display:flex; flex-wrap:wrap; gap:8px}
+.pill{display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line); background:color-mix(in srgb,var(--paper) 78%,transparent); backdrop-filter:blur(6px); border-radius:999px; padding:6px 15px; font-size:12.5px; letter-spacing:.05em; color:var(--ink-soft); box-shadow:var(--shadow-s)}
+.pill i{width:5px;height:5px;border-radius:50%;background:var(--gold);display:block}
+.hero-note{margin-top:clamp(24px,4vw,36px); max-width:58ch; font-size:15.5px; color:var(--ink-soft); padding-left:20px; border-left:1px solid var(--gold-soft)}
+.hero-art{display:flex; justify-content:center}
+.hero-art svg{width:min(100%,440px); height:auto; overflow:visible; filter:drop-shadow(0 24px 50px var(--glow))}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinb{to{transform:rotate(-360deg)}}
+.rot-a{transform-origin:150px 150px; animation:spin 170s linear infinite}
+.rot-b{transform-origin:150px 150px; animation:spinb 96s linear infinite}
+@keyframes breathe{0%,100%{opacity:.45} 50%{opacity:1}}
+.breathe{animation:breathe 7s ease-in-out infinite}
+
+/* ============ NAV ============ */
+nav.chapters{position:sticky; top:0; z-index:60; backdrop-filter:blur(18px) saturate(1.5); background:color-mix(in srgb, var(--ground) 76%, transparent); border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft)}
+nav.chapters ol{list-style:none; margin:0 auto; padding:0 clamp(18px,4vw,48px); max-width:1200px; display:flex; overflow-x:auto; scrollbar-width:none}
+nav.chapters ol::-webkit-scrollbar{display:none}
+nav.chapters a{display:flex; align-items:center; gap:8px; padding:13px 14px; text-decoration:none; font-size:12.5px; letter-spacing:.05em; white-space:nowrap; color:var(--muted); border-bottom:2px solid transparent; transition:color .2s, border-color .2s}
+nav.chapters a b{font-family:"Cormorant Garamond",serif; font-size:14px; font-weight:600; color:var(--gold); opacity:.7}
+nav.chapters a:hover{color:var(--ink)}
+nav.chapters a.on{color:var(--ink); border-bottom-color:var(--rose); font-weight:500}
+nav.chapters a.on b{opacity:1}
+nav.chapters a:focus-visible{outline:2px solid var(--violet); outline-offset:-4px; border-radius:6px}
+
+/* ============ SECTIONS ============ */
+section{padding:clamp(54px,9vw,110px) 0; position:relative; scroll-margin-top:56px}
+.divider{display:block; margin:0 auto; width:min(260px,62%); height:26px; opacity:.7}
+.sec-head{margin-bottom:clamp(28px,4.4vw,48px)}
+.sec-mark{display:flex; align-items:center; gap:14px; margin-bottom:18px}
+.sec-mark svg{width:36px; height:36px; flex:none}
+.sec-mark span{font-size:11.5px; letter-spacing:.28em; text-transform:uppercase; color:var(--rose); font-weight:500}
+.sec-head h2{font-size:clamp(33px,5.6vw,56px); letter-spacing:-.02em; font-weight:300}
+.sec-head h2 .it{font-style:italic; background:linear-gradient(94deg,var(--violet),var(--rose) 55%,var(--gold-bright)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.sec-head .lede{margin-top:.72em; color:var(--ink-soft); font-size:18px; max-width:62ch; font-weight:300}
+.body-col > * + *{margin-top:1.15em}
+.body-col p{max-width:66ch}
+h3.sub{font-family:"Cormorant Garamond",serif; font-size:clamp(25px,3.3vw,32px); font-weight:400; margin-top:1.7em}
+h3.sub .it{font-style:italic; color:var(--rose)}
+.dropcap::first-letter{float:left; font-family:"Cormorant Garamond",serif; font-size:4.2em; line-height:.82; padding:.06em .1em 0 0; color:var(--rose); font-weight:400}
+
+/* hindi-class marker */
+.hi{display:inline-flex; align-items:center; gap:5px; vertical-align:middle; margin-left:6px; padding:1px 9px 2px; border-radius:999px; border:1px solid var(--gold-soft); background:color-mix(in srgb,var(--gold-soft) 22%,transparent); color:var(--gold); font-size:10px; letter-spacing:.12em; text-transform:uppercase; font-weight:500; white-space:nowrap}
+.hi b{font-family:"Noto Serif Devanagari",serif; font-size:11px; font-weight:600; letter-spacing:0}
+
+/* ============ CARDS ============ */
+.card{background:color-mix(in srgb,var(--paper) 92%,transparent); backdrop-filter:blur(4px); border:1px solid var(--line); border-radius:var(--r); padding:clamp(20px,3.2vw,32px); box-shadow:var(--shadow)}
+.grid{display:grid; gap:18px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(238px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.lab{display:block; font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); font-weight:500; margin-bottom:12px}
+.card h3{font-size:25px; font-weight:400}
+.card h4{font-size:21px; font-weight:400}
+.card p{color:var(--ink-soft); font-size:16px; margin-top:.7em}
+.tw{text-align:center; padding-top:26px; position:relative; overflow:hidden}
+.tw svg{display:block; margin:0 auto 14px}
+.tw h3{font-size:24px}
+.tw .from{font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--rose); margin-top:8px; font-weight:500}
+.tw p{font-size:15.5px}
+
+/* ============ VOICE ============ */
+.voice{position:relative; margin:clamp(30px,5vw,50px) auto; max-width:680px; padding:clamp(28px,4vw,44px) clamp(24px,4vw,46px); border-radius:var(--r); background:linear-gradient(135deg, color-mix(in srgb,var(--blush) 62%,var(--paper)), color-mix(in srgb,var(--lilac) 55%,var(--paper)) 60%, color-mix(in srgb,var(--peri) 45%,var(--paper))); border:1px solid var(--line); box-shadow:var(--shadow-l); text-align:center}
+.voice::before{content:"\201D"; position:absolute; top:-4px; left:50%; transform:translateX(-50%); font-family:"Cormorant Garamond",serif; font-size:80px; color:var(--gold); opacity:.45; line-height:1}
+.voice p{font-family:"Cormorant Garamond",Georgia,serif; font-style:italic; font-size:clamp(21px,2.7vw,28px); line-height:1.4; color:var(--ink); font-weight:400; margin-top:18px}
+.voice .attr{margin-top:16px; font-family:"Jost",sans-serif; font-style:normal; font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-soft); font-weight:500}
+
+/* ============ ASKED ============ */
+.asked{position:relative; border-radius:var(--r); border:1px solid var(--line); background:color-mix(in srgb,var(--paper) 92%,transparent); box-shadow:var(--shadow-s); overflow:hidden; margin-top:22px}
+.asked::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(180deg,var(--rose),var(--lilac),var(--peri))}
+.asked .q{display:flex; gap:14px; align-items:flex-start; padding:18px clamp(18px,3vw,26px) 12px clamp(20px,3vw,28px)}
+.asked .q .mark{flex:none; width:26px; height:26px; border-radius:50%; background:color-mix(in srgb,var(--blush) 68%,var(--paper)); color:var(--rose); font-size:14px; display:grid; place-items:center; font-weight:500; border:1px solid var(--line)}
+.asked .q p{font-family:"Cormorant Garamond",serif; font-style:italic; font-size:20px; color:var(--ink); line-height:1.34}
+.asked .a{padding:0 clamp(18px,3vw,26px) 20px clamp(20px,3vw,28px); color:var(--ink-soft); font-size:16px}
+.asked .a p + p{margin-top:.85em}
+.asked .tagline{padding:9px clamp(20px,3vw,28px); background:var(--paper-2); border-top:1px solid var(--line-soft); font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); font-weight:500}
+
+/* ============ DEFS ============ */
+.defs{display:flex; flex-direction:column; border-top:1px solid var(--line)}
+.def{display:grid; grid-template-columns:minmax(150px,.42fr) 1fr; gap:6px 28px; padding:18px 4px; border-bottom:1px solid var(--line); align-items:baseline}
+.def dt{font-family:"Cormorant Garamond",serif; font-size:22px; font-weight:500; color:var(--ink)}
+.def dt small{display:block; font-family:"Jost",sans-serif; font-size:10.5px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-top:5px}
+.def dd{margin:0; color:var(--ink-soft); font-size:16px}
+@media (max-width:620px){ .def{grid-template-columns:1fr; gap:4px} }
+
+/* ============ FLOW ============ */
+.flow{display:flex; flex-wrap:wrap; align-items:center; gap:12px; padding:20px; border-radius:18px; background:var(--paper-2); border:1px solid var(--line-soft)}
+.chip{display:inline-flex; align-items:center; gap:8px; background:var(--paper); border:1px solid var(--line); border-radius:999px; padding:8px 17px; font-size:14px; color:var(--ink); box-shadow:var(--shadow-s)}
+.chip.hot{background:linear-gradient(120deg,color-mix(in srgb,var(--blush) 70%,var(--paper)),color-mix(in srgb,var(--lilac) 60%,var(--paper))); border-color:var(--rose); font-weight:500}
+.arrow{color:var(--gold); font-size:16px}
+
+/* ============ KUNDALI ============ */
+.chart-pair{display:grid; grid-template-columns:1fr auto 1fr; gap:clamp(10px,2vw,22px); align-items:center; padding:clamp(16px,2.6vw,26px); border:1px solid var(--line); border-radius:var(--r); background:color-mix(in srgb,var(--paper) 92%,transparent); box-shadow:var(--shadow)}
+@media (max-width:640px){ .chart-pair{grid-template-columns:1fr; justify-items:center} .chart-pair .link{transform:rotate(90deg)} }
+.kundali{width:100%; max-width:232px; margin:0 auto; display:block}
+.kundali .frame{fill:none; stroke:var(--line); stroke-width:1.4}
+.kundali .rn{fill:var(--muted); font-family:"Jost",sans-serif; font-size:13px; text-anchor:middle}
+.kundali .rn.on{fill:var(--rose); font-weight:600}
+.kundali .gl{fill:var(--ink); font-family:"Cormorant Garamond",serif; font-size:15px; font-style:italic; text-anchor:middle}
+.chart-cap{text-align:center; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; font-weight:500}
+.link{display:grid; place-items:center; color:var(--gold); text-align:center}
+.link span{display:block; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-top:6px}
+.verdict{grid-column:1/-1; margin-top:6px; padding:15px 18px; border-radius:16px; text-align:center; background:linear-gradient(100deg,color-mix(in srgb,var(--lilac) 46%,var(--paper)),color-mix(in srgb,var(--blush) 36%,var(--paper))); font-family:"Cormorant Garamond",serif; font-size:22px; font-weight:500; color:var(--ink)}
+.verdict small{display:block; font-family:"Jost",sans-serif; font-size:14px; font-weight:300; color:var(--ink-soft); margin-top:5px}
+.verdict.bad{background:linear-gradient(100deg,color-mix(in srgb,var(--blush) 62%,var(--paper)),var(--paper)); color:var(--rose)}
+.ex-tabs{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; justify-content:center}
+.ex-tabs button{font-family:inherit; font-size:13px; letter-spacing:.03em; padding:7px 15px; border-radius:999px; border:1px solid var(--line); background:var(--paper); color:var(--ink-soft); cursor:pointer; transition:background .18s, color .18s, border-color .18s}
+.ex-tabs button:hover{border-color:var(--rose)}
+.ex-tabs button[aria-selected="true"]{background:linear-gradient(120deg,var(--blush),var(--lilac)); color:var(--ink); border-color:var(--rose); font-weight:500}
+.ex-tabs button:focus-visible{outline:2px solid var(--violet); outline-offset:2px}
+.ex-note{text-align:center; color:var(--ink-soft); font-size:15.5px; margin:14px auto 0; max-width:60ch}
+
+/* ============ FIRES ============ */
+.fires{display:flex; flex-direction:column; gap:12px}
+.fire{display:grid; grid-template-columns:56px 1fr; gap:20px; align-items:center; padding:18px 22px; border:1px solid var(--line); border-radius:18px; background:color-mix(in srgb,var(--paper) 92%,transparent); box-shadow:var(--shadow-s); transition:transform .3s, box-shadow .3s}
+.fire:hover{transform:translateY(-2px); box-shadow:var(--shadow)}
+.fire svg{width:50px; height:56px; display:block}
+.fire h4{font-family:"Cormorant Garamond",serif; font-size:24px; font-weight:500}
+.fire h4 small{display:inline-block; font-family:"Jost",sans-serif; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-left:10px; font-weight:400; vertical-align:middle}
+.fire p{color:var(--ink-soft); font-size:15.5px; margin-top:4px}
+.fire.final{border-color:var(--rose); background:linear-gradient(115deg,color-mix(in srgb,var(--blush) 44%,var(--paper)),color-mix(in srgb,var(--lilac) 30%,var(--paper)))}
+@media (max-width:560px){ .fire{grid-template-columns:1fr; gap:8px} }
+
+/* ============ SUTRA ============ */
+.sutra{border:1px solid var(--line); border-radius:var(--r); background:color-mix(in srgb,var(--paper) 94%,transparent); overflow:hidden; box-shadow:var(--shadow-s)}
+.sutra .band{height:4px; background:linear-gradient(90deg,var(--gold-soft),var(--blush),var(--lilac),var(--peri),var(--gold-soft))}
+.sutra .src{display:flex; justify-content:flex-end; padding:10px clamp(20px,3vw,34px) 0; font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
+.sutra .dev{padding:14px clamp(20px,3vw,34px) 8px; font-family:"Noto Serif Devanagari",serif; font-size:19px; line-height:2; color:var(--ink); text-align:center}
+.sutra .iast{padding:0 clamp(20px,3vw,34px) 20px; font-family:"Cormorant Garamond",serif; font-style:italic; font-size:16.5px; color:var(--violet); text-align:center; line-height:1.6}
+.sutra .mean{padding:18px clamp(20px,3vw,34px); border-top:1px solid var(--line-soft); background:var(--paper-2); color:var(--ink); font-family:"Cormorant Garamond",serif; font-size:19px; line-height:1.55}
+.sutra .mean b{color:var(--rose); font-weight:500}
+.sutra .caution{padding:16px clamp(20px,3vw,34px); border-top:1px solid var(--line-soft); font-size:15.5px; color:var(--ink-soft); display:flex; gap:14px; align-items:flex-start}
+.sutra .caution .tag{flex:none; font-size:10px; letter-spacing:.18em; text-transform:uppercase; font-weight:500; color:var(--gold); padding-top:4px; width:76px}
+@media (max-width:560px){ .sutra .caution{flex-direction:column; gap:6px} .sutra .caution .tag{width:auto} }
+
+/* ============ WEAVE / TALLY ============ */
+.weave-wrap{display:grid; grid-template-columns:minmax(0,1fr) minmax(220px,290px); gap:clamp(18px,3vw,34px); align-items:center}
+@media (max-width:780px){ .weave-wrap{grid-template-columns:1fr} }
+.tally{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px}
+.pot{border:1px solid var(--line); border-radius:18px; background:var(--paper); padding:16px; display:flex; flex-direction:column; gap:10px; box-shadow:var(--shadow-s)}
+.pot .pad{font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); font-weight:500}
+.pot h4{font-family:"Cormorant Garamond",serif; font-size:23px; font-weight:500}
+.pot .desc{font-size:14px; color:var(--ink-soft); flex:1; line-height:1.5}
+.counter{display:flex; align-items:center; gap:12px}
+.counter button{width:30px; height:30px; border-radius:50%; border:1px solid var(--line); background:var(--paper-2); color:var(--ink); font-size:16px; line-height:1; cursor:pointer; font-family:inherit; transition:background .15s, border-color .15s, transform .12s}
+.counter button:hover{background:var(--blush); border-color:var(--rose)}
+.counter button:active{transform:scale(.92)}
+.counter button:focus-visible{outline:2px solid var(--violet); outline-offset:2px}
+.counter output{font-family:"Cormorant Garamond",serif; font-size:25px; font-weight:500; font-variant-numeric:tabular-nums; min-width:1.6ch; text-align:center}
+.tally-foot{margin-top:16px; font-size:14px; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px}
+#weave{width:100%; height:auto; display:block}
+
+/* ============ BANDS ============ */
+.trimurti{display:grid; grid-template-columns:minmax(230px,300px) minmax(0,1fr); gap:clamp(18px,3vw,38px); align-items:center}
+@media (max-width:780px){ .trimurti{grid-template-columns:1fr} }
+.bands{display:flex; flex-direction:column; gap:12px}
+.band{display:grid; grid-template-columns:auto 1fr; gap:20px; align-items:center; padding:18px 22px; border-radius:18px; border:1px solid var(--line); box-shadow:var(--shadow-s)}
+.band .r{font-family:"Cormorant Garamond",serif; font-size:15px; color:var(--ink-soft); font-weight:500; white-space:nowrap}
+.band h4{font-family:"Cormorant Garamond",serif; font-size:23px; font-weight:500; margin-bottom:3px}
+.band p{font-size:15px; color:var(--ink-soft)}
+.band.b1{background:linear-gradient(100deg,color-mix(in srgb,var(--blush) 46%,var(--paper)),var(--paper))}
+.band.b2{background:linear-gradient(100deg,color-mix(in srgb,var(--lilac) 48%,var(--paper)),var(--paper))}
+.band.b3{background:linear-gradient(100deg,color-mix(in srgb,var(--gold-soft) 42%,var(--paper)),var(--paper))}
+@media (max-width:560px){ .band{grid-template-columns:1fr; gap:6px} }
+
+/* ============ MISC ============ */
+figure{margin:0}
+figcaption{color:var(--muted); margin-top:12px; text-align:center; font-style:italic; font-family:"Cormorant Garamond",serif; font-size:16.5px}
+.scroll-x{overflow-x:auto; padding-bottom:6px}
+.callout{border-radius:var(--r); padding:clamp(20px,3vw,32px); background:linear-gradient(150deg,color-mix(in srgb,var(--gold-soft) 30%,var(--paper)),var(--paper)); border:1px solid var(--gold-soft); box-shadow:var(--shadow-s)}
+.callout h3{font-size:26px; font-weight:400}
+.callout p{color:var(--ink-soft); font-size:16px; margin-top:.7em}
+.stat-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:18px}
+.stat{flex:1 1 120px; text-align:center; padding:16px 12px; border-radius:16px; background:var(--paper); border:1px solid var(--line)}
+.stat b{display:block; font-family:"Cormorant Garamond",serif; font-size:32px; font-weight:500; color:var(--rose); line-height:1.05}
+.stat span{display:block; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:6px}
+.sheet{border-radius:var(--r); border:1px solid var(--line); background:linear-gradient(155deg,color-mix(in srgb,var(--lilac) 34%,var(--paper)),color-mix(in srgb,var(--blush) 28%,var(--paper))); padding:clamp(20px,3.4vw,36px); box-shadow:var(--shadow)}
+.sheet table{width:100%; border-collapse:collapse; font-size:15.5px}
+.sheet th{text-align:left; font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-soft); font-weight:500; padding:0 16px 12px 0; border-bottom:1px solid var(--line)}
+.sheet td{padding:13px 16px 13px 0; border-bottom:1px solid var(--line-soft); vertical-align:top; color:var(--ink-soft)}
+.sheet td:first-child{font-family:"Cormorant Garamond",serif; font-size:19px; color:var(--ink); font-weight:500; white-space:nowrap}
+footer{padding:clamp(54px,8vw,96px) 0 clamp(44px,6vw,76px); text-align:center}
+footer svg{display:block; margin:0 auto 18px}
+footer p{color:var(--muted); font-size:14.5px}
+footer .om{font-family:"Noto Serif Devanagari",serif; font-size:26px; color:var(--gold); margin-bottom:10px}
+
+.rev{opacity:0; transform:translateY(20px); transition:opacity .75s cubic-bezier(.22,.61,.36,1), transform .75s cubic-bezier(.22,.61,.36,1)}
+.rev.in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rev{opacity:1; transform:none; transition:none}
+  .rot-a,.rot-b,.breathe,body::before{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+<style>
+@keyframes flare{ 0%,74%{opacity:.35; r:3} 83%{opacity:1; r:8} 92%,100%{opacity:.35; r:3} }
+#kharaPulse{animation:flare 7s linear infinite; transform-box:fill-box}
+@media (prefers-reduced-motion:reduce){ #kharaPulse{animation:none; opacity:1} #transitDot{display:none} }
+</style>
+<style>
+/* ============ REFINEMENT PASS ============ */
+:root{ --hi-line:rgba(255,255,255,.62); --ornament:var(--gold-soft); }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --hi-line:rgba(255,255,255,.055); } }
+:root[data-theme="dark"]{ --hi-line:rgba(255,255,255,.055); }
+
+::selection{ background:color-mix(in srgb,var(--blush) 80%,transparent); color:var(--ink); }
+p{ text-wrap:pretty; }
+
+/* reading progress */
+#progress{
+  position:fixed; top:0; left:0; height:2.5px; width:0%; z-index:100; pointer-events:none;
+  background:linear-gradient(90deg,var(--gold),var(--rose) 45%,var(--violet));
+  box-shadow:0 0 12px var(--glow);
+  transition:width .12s linear;
+}
+
+/* ghost chapter numerals */
+.ghost{
+  position:absolute; top:clamp(28px,5vw,64px); right:clamp(-6px,1vw,18px);
+  font-family:"Cormorant Garamond",serif; font-weight:300; font-style:italic;
+  font-size:clamp(90px,15vw,210px); line-height:.8; letter-spacing:-.04em;
+  color:var(--ink); opacity:.045; pointer-events:none; user-select:none; z-index:0;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .ghost{opacity:.07} }
+:root[data-theme="dark"] .ghost{opacity:.07}
+section > *{ position:relative; z-index:1 }
+@media (max-width:900px){ .ghost{display:none} }
+
+/* cards: inner light, lift on hover */
+.card, .sutra, .asked, .callout, .sheet, .pot, .chart-pair, .band{
+  box-shadow:var(--shadow), inset 0 1px 0 var(--hi-line);
+}
+.card, .callout{ transition:transform .45s cubic-bezier(.22,.61,.36,1), box-shadow .45s cubic-bezier(.22,.61,.36,1); }
+.card:hover, .callout:hover{ transform:translateY(-3px); box-shadow:var(--shadow-l), inset 0 1px 0 var(--hi-line); }
+
+/* illuminated corners on callouts */
+.callout{ position:relative; }
+.callout::before, .callout::after{
+  content:""; position:absolute; width:20px; height:20px; pointer-events:none;
+  border-color:var(--gold); opacity:.5;
+}
+.callout::before{ top:11px; left:11px; border-top:1px solid; border-left:1px solid; border-top-left-radius:8px; }
+.callout::after{ bottom:11px; right:11px; border-bottom:1px solid; border-right:1px solid; border-bottom-right-radius:8px; }
+
+/* voice: flourished attribution */
+.voice .attr{ display:flex; align-items:center; justify-content:center; gap:14px; }
+.voice .attr::before, .voice .attr::after{ content:""; height:1px; width:34px; background:var(--gold); opacity:.45; }
+.voice{ transition:transform .5s cubic-bezier(.22,.61,.36,1); }
+.voice:hover{ transform:translateY(-2px); }
+
+/* asked-in-class: washed question, quieter answer */
+.asked .q{
+  background:linear-gradient(100deg, color-mix(in srgb,var(--blush) 26%,transparent), transparent 70%);
+  border-bottom:1px solid var(--line-soft); padding-bottom:16px; margin-bottom:14px;
+}
+.asked .q .mark{ box-shadow:0 0 0 4px color-mix(in srgb,var(--blush) 35%,transparent); }
+
+/* sutra: parchment field with corner marks */
+.sutra .dev{ position:relative; }
+.sutra .dev::before, .sutra .dev::after{
+  content:""; position:absolute; width:14px; height:14px; border-color:var(--gold); opacity:.4;
+}
+.sutra .dev::before{ top:2px; left:clamp(12px,2.4vw,24px); border-top:1px solid; border-left:1px solid; }
+.sutra .dev::after{ bottom:0; right:clamp(12px,2.4vw,24px); border-bottom:1px solid; border-right:1px solid; }
+.sutra{ background:
+  radial-gradient(120% 90% at 50% 0%, color-mix(in srgb,var(--gold-soft) 16%,transparent), transparent 60%),
+  color-mix(in srgb,var(--paper) 94%,transparent); }
+
+/* rail: connecting thread */
+.rail{ padding-left:3px; }
+.rail::before{
+  content:""; position:absolute; left:6px; top:6px; bottom:6px; width:1px;
+  background:linear-gradient(180deg,transparent,var(--line) 12%,var(--line) 88%,transparent);
+}
+.rail i{ position:relative; z-index:1 }
+
+/* hero entrance + scroll cue */
+@keyframes riseIn{ from{opacity:0; transform:translateY(18px)} to{opacity:1; transform:none} }
+.hero .lift{ animation:riseIn .9s cubic-bezier(.22,.61,.36,1) backwards; }
+.hero .lift:nth-child(1){animation-delay:.05s}
+.hero .lift:nth-child(2){animation-delay:.16s}
+.hero .lift:nth-child(3){animation-delay:.27s}
+.hero .lift:nth-child(4){animation-delay:.38s}
+.hero .lift:nth-child(5){animation-delay:.49s}
+.hero-art svg{ will-change:transform; }
+.cue{
+  display:flex; align-items:center; gap:10px; justify-content:center;
+  margin-top:clamp(26px,5vw,46px); color:var(--muted); font-size:11px;
+  letter-spacing:.28em; text-transform:uppercase;
+}
+.cue span{ display:block; width:1px; height:30px; background:linear-gradient(180deg,var(--gold),transparent); }
+@keyframes bob{0%,100%{transform:translateY(0); opacity:.5} 50%{transform:translateY(5px); opacity:1}}
+.cue span{ animation:bob 2.6s ease-in-out infinite; }
+
+/* back to top */
+#toTop{
+  position:fixed; right:22px; bottom:22px; z-index:80;
+  width:44px; height:44px; border-radius:50%; cursor:pointer;
+  border:1px solid var(--line); background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px); color:var(--rose); display:grid; place-items:center;
+  box-shadow:var(--shadow); opacity:0; transform:translateY(10px) scale(.9); pointer-events:none;
+  transition:opacity .35s, transform .35s, background .2s;
+}
+#toTop.show{ opacity:1; transform:none; pointer-events:auto; }
+#toTop:hover{ background:var(--blush); }
+#toTop:focus-visible{ outline:2px solid var(--violet); outline-offset:3px; }
+
+/* chips and flow polish */
+.chip{ transition:transform .25s, box-shadow .25s; }
+.flow:hover .chip.hot{ transform:translateY(-2px); box-shadow:var(--shadow); }
+.flow{ background:
+  linear-gradient(120deg, color-mix(in srgb,var(--lilac) 16%,transparent), transparent 55%),
+  var(--paper-2); }
+
+/* section head hairline */
+.sec-mark::after{ content:""; height:1px; flex:1; background:linear-gradient(90deg,var(--line),transparent); }
+
+/* nav active pill */
+nav.chapters a.on{ background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--blush) 26%,transparent)); }
+
+/* table row hover */
+.sheet tbody tr{ transition:background .2s }
+.sheet tbody tr:hover{ background:color-mix(in srgb,var(--paper) 55%,transparent) }
+
+@media (prefers-reduced-motion:reduce){
+  .hero .lift{animation:none}
+  .cue span{animation:none}
+  .card:hover, .callout:hover, .voice:hover{transform:none}
+  #progress{transition:none}
+}
+</style>
+<style>
+/* ============ AUBERGINE, GOLD, AND SPARKLE ============ */
+
+/* sparkle field */
+.sparkles{position:absolute; inset:0; pointer-events:none; overflow:hidden; z-index:0}
+.sparkles svg{position:absolute; color:var(--gold-bright); opacity:0}
+@keyframes twinkle{
+  0%,100%{opacity:0; transform:scale(.4) rotate(0deg)}
+  40%{opacity:.9; transform:scale(1) rotate(35deg)}
+  70%{opacity:.25; transform:scale(.7) rotate(60deg)}
+}
+.sparkles svg{animation:twinkle 6.5s ease-in-out infinite}
+.hero{position:relative; overflow:visible}
+.hero > .wrap{position:relative; z-index:1}
+
+/* jupiter halo behind the mandala */
+.hero-art{position:relative}
+.hero-art::before{
+  content:""; position:absolute; width:min(92%,430px); aspect-ratio:1; border-radius:50%;
+  background:radial-gradient(circle, color-mix(in srgb,var(--gold-soft) 62%,transparent) 0%, color-mix(in srgb,var(--orchid) 40%,transparent) 42%, transparent 68%);
+  filter:blur(26px); opacity:.85; animation:halo 11s ease-in-out infinite;
+}
+@keyframes halo{0%,100%{transform:scale(1); opacity:.7} 50%{transform:scale(1.08); opacity:1}}
+
+/* venusian pearl sheen on cards */
+.card::before, .callout::before{ }
+.card{position:relative; isolation:isolate}
+.card::after{
+  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:-1;
+  background:linear-gradient(135deg, color-mix(in srgb,var(--orchid) 20%,transparent) 0%, transparent 34%, transparent 66%, color-mix(in srgb,var(--gold-soft) 22%,transparent) 100%);
+  opacity:.55;
+}
+
+/* gilded edges */
+.voice{
+  box-shadow:var(--shadow-l), inset 0 0 0 1px color-mix(in srgb,var(--gold) 28%,transparent);
+}
+.voice::before{ color:var(--gold-bright); opacity:.6 }
+.sutra .band{ background:linear-gradient(90deg,var(--gold),var(--rose),var(--violet),var(--gold-bright),var(--gold)) }
+.sheet{ box-shadow:var(--shadow), inset 0 0 0 1px color-mix(in srgb,var(--gold) 18%,transparent) }
+.hi{ border-color:color-mix(in srgb,var(--gold) 45%,transparent) }
+
+/* labels and ornaments in gold */
+.lab{ color:var(--gold) }
+.chart-cap{ color:var(--gold) ; opacity:.85 }
+.eyebrow-line{ color:var(--gold) }
+.eyebrow-line::after{ background:linear-gradient(90deg,var(--gold),transparent); opacity:.55 }
+.sec-mark span{ color:var(--gold) }
+.pill i{ background:var(--gold-bright) }
+
+/* verdict plaque, gilded */
+.verdict{
+  background:linear-gradient(100deg, color-mix(in srgb,var(--lilac) 44%,var(--paper)), color-mix(in srgb,var(--gold-soft) 34%,var(--paper)));
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--gold) 26%,transparent);
+}
+
+/* fires glow softly */
+.fire.final{ box-shadow:var(--shadow), inset 0 0 0 1px color-mix(in srgb,var(--gold) 30%,transparent) }
+
+/* stat tiles */
+.stat{ background:linear-gradient(160deg, color-mix(in srgb,var(--gold-soft) 16%,var(--paper)), var(--paper)) }
+.stat b{ color:var(--violet) }
+
+footer .om{ text-shadow:0 0 22px var(--glow) }
+
+@media (prefers-reduced-motion:reduce){
+  .sparkles svg{animation:none; opacity:.5}
+  .hero-art::before{animation:none}
+  .hero h1 .it{animation:none}
+}
+</style>
+<style>
+/* ============ THEME TOGGLE ============ */
+nav.chapters{display:flex; align-items:center; gap:12px}
+nav.chapters ol{flex:1; min-width:0}
+.theme-toggle{
+  flex:none; position:relative; margin-right:clamp(18px,4vw,48px);
+  display:inline-flex; align-items:center; gap:2px;
+  width:66px; height:32px; padding:3px; border-radius:999px; cursor:pointer;
+  border:1px solid var(--line); background:var(--paper-2);
+  box-shadow:inset 0 1px 3px color-mix(in srgb,var(--aubergine) 12%,transparent);
+  font:inherit; color:var(--muted);
+  transition:border-color .25s, background .25s;
+}
+.theme-toggle:hover{border-color:color-mix(in srgb,var(--gold) 55%,transparent)}
+.theme-toggle:focus-visible{outline:2px solid var(--violet); outline-offset:3px}
+.theme-toggle .knob{
+  position:absolute; top:3px; left:3px; width:26px; height:26px; border-radius:50%;
+  background:linear-gradient(150deg,var(--gold-bright),var(--gold));
+  box-shadow:0 2px 8px color-mix(in srgb,var(--gold) 45%,transparent);
+  transition:transform .42s cubic-bezier(.5,1.6,.5,1);
+}
+.theme-toggle[data-mode="dark"] .knob{
+  transform:translateX(32px);
+  background:linear-gradient(150deg,var(--orchid),var(--violet));
+  box-shadow:0 2px 10px color-mix(in srgb,var(--violet) 55%,transparent);
+}
+.theme-toggle svg{position:relative; z-index:1; width:26px; height:26px; padding:5px; transition:color .3s, opacity .3s}
+.theme-toggle .ic-sun{color:var(--aubergine); opacity:1}
+.theme-toggle .ic-moon{color:var(--muted); opacity:.75}
+.theme-toggle[data-mode="dark"] .ic-sun{color:var(--muted); opacity:.7}
+.theme-toggle[data-mode="dark"] .ic-moon{color:#1B0C22; opacity:1}
+@media (max-width:520px){ .theme-toggle{margin-right:16px} }
+@media (prefers-reduced-motion:reduce){ .theme-toggle .knob{transition:none} }
+</style>
+
+<style>
+/* ============ THIS GUIDE ============ */
+.checks{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:10px}
+.check{
+  display:flex; align-items:flex-start; gap:11px; padding:12px 15px;
+  border:1px solid var(--line); border-radius:14px; background:color-mix(in srgb,var(--paper) 90%,transparent);
+  font-size:15px; color:var(--ink-soft); box-shadow:var(--shadow-s);
+  transition:transform .3s, border-color .3s;
+}
+.check:hover{transform:translateY(-2px); border-color:color-mix(in srgb,var(--gold) 50%,transparent)}
+.check svg{flex:none; width:16px; height:16px; margin-top:3px; color:var(--gold)}
+.check b{color:var(--ink); font-weight:500}
+
+.steps{counter-reset:st; display:flex; flex-direction:column; gap:2px}
+.step{
+  position:relative; display:grid; grid-template-columns:52px 1fr; gap:18px; align-items:start;
+  padding:18px 20px; border-radius:16px; transition:background .3s;
+}
+.step:hover{background:color-mix(in srgb,var(--paper) 70%,transparent)}
+.step::before{
+  counter-increment:st; content:counter(st,decimal-leading-zero);
+  font-family:"Cormorant Garamond",serif; font-size:26px; font-weight:500; color:var(--gold);
+  line-height:1.1; text-align:center;
+  border-right:1px solid var(--line); padding-right:14px; align-self:stretch;
+}
+.step h4{font-family:"Cormorant Garamond",serif; font-size:22px; font-weight:500; margin-bottom:3px}
+.step p{color:var(--ink-soft); font-size:15.5px}
+.step em{color:var(--violet); font-style:italic}
+
+.pair{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+@media (max-width:620px){ .pair{grid-template-columns:1fr} }
+.yes, .no{border-radius:18px; padding:20px 22px; border:1px solid var(--line); box-shadow:var(--shadow-s)}
+.yes{background:linear-gradient(150deg,color-mix(in srgb,var(--lilac) 30%,var(--paper)),var(--paper))}
+.no{background:linear-gradient(150deg,color-mix(in srgb,var(--blush) 30%,var(--paper)),var(--paper))}
+.yes h4, .no h4{font-family:"Cormorant Garamond",serif; font-size:21px; font-weight:500; margin-bottom:10px; display:flex; align-items:center; gap:9px}
+.yes ul, .no ul{margin:0; padding-left:18px; color:var(--ink-soft); font-size:15.5px}
+.yes li, .no li{margin:7px 0}
+
+.qcard{border:1px solid var(--line); border-radius:var(--r); overflow:hidden; background:color-mix(in srgb,var(--paper) 92%,transparent); box-shadow:var(--shadow-s)}
+.qcard .qh{
+  padding:18px clamp(18px,3vw,26px);
+  background:linear-gradient(100deg,color-mix(in srgb,var(--lilac) 30%,transparent),transparent 70%);
+  border-bottom:1px solid var(--line-soft);
+  font-family:"Cormorant Garamond",serif; font-size:21px; color:var(--ink); line-height:1.32;
+}
+.qcard .qh span{
+  display:block; font-family:"Jost",sans-serif; font-size:10px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--gold); margin-bottom:8px; font-weight:500;
+}
+.qcard .ans{padding:16px clamp(18px,3vw,26px); font-size:16px; color:var(--ink-soft)}
+.qcard .ans p + p{margin-top:.8em}
+.qcard .key{
+  display:inline-block; margin-bottom:10px; padding:5px 14px; border-radius:999px;
+  background:linear-gradient(120deg,var(--gold-soft),color-mix(in srgb,var(--blush) 70%,transparent));
+  color:var(--ink); font-family:"Cormorant Garamond",serif; font-size:19px; font-weight:500;
+  border:1px solid color-mix(in srgb,var(--gold) 35%,transparent);
+}
+.rule{
+  border-left:2px solid var(--gold); padding:4px 0 4px 18px; margin:22px 0;
+  color:var(--ink); font-family:"Cormorant Garamond",serif; font-style:italic; font-size:20px; line-height:1.42;
+}
+</style>
+
+<div class="rail" aria-hidden="true">
+  <ol>
+    <li><a href="#exam"><i></i><span>How the exam runs</span></a></li>
+    <li><a href="#memorise"><i></i><span>Know these cold</span></a></li>
+    <li><a href="#write"><i></i><span>Writing the analysis</span></a></li>
+    <li><a href="#order"><i></i><span>The order of reading</span></a></li>
+    <li><a href="#worked"><i></i><span>One Lagna, worked</span></a></li>
+    <li><a href="#rules"><i></i><span>Rules that came up</span></a></li>
+    <li><a href="#practice"><i></i><span>Practice questions</span></a></li>
+    <li><a href="#sheet"><i></i><span>Quick reference</span></a></li>
+  </ol>
+</div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow-line">Jyotisha &middot; Semester I &middot; mentoring session</p>
+      <h1>Five Houses,<br><span class="it">Deep</span></h1>
+      <p class="sub">How to sit the exam, and how to read a chart in an order that holds.</p>
+      <div class="hero-meta">
+        <span class="pill"><i></i>Quiz and open practice</span>
+        <span class="pill"><i></i>One chart, read live</span>
+        <span class="pill"><i></i>Closed book</span>
+      </div>
+      <p class="hero-note">Everything here is from the session itself: the guidance given, the reasoning worked out loud on a volunteered chart, and the quiz questions with their answers. Nothing has been added from anywhere else, and no chart or person is identified.</p>
+    </div>
+    <div class="hero-art">
+      <div id="heroChart"></div>
+    </div>
+  </div>
+</header>
+
+<nav class="chapters" aria-label="Chapters">
+  <ol>
+    <li><a href="#exam"><b>i</b>How the exam runs</a></li>
+    <li><a href="#memorise"><b>ii</b>Know these cold</a></li>
+    <li><a href="#write"><b>iii</b>Writing the analysis</a></li>
+    <li><a href="#order"><b>iv</b>The order of reading</a></li>
+    <li><a href="#worked"><b>v</b>One Lagna, worked</a></li>
+    <li><a href="#rules"><b>vi</b>Rules that came up</a></li>
+    <li><a href="#practice"><b>vii</b>Practice questions</a></li>
+    <li><a href="#sheet"><b>viii</b>Quick reference</a></li>
+  </ol>
+</nav>
+
+<main class="wrap">
+
+<section id="exam">
+  <div class="col sec-head rev">
+    <div class="sec-mark">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="5" width="22" height="30" rx="3" fill="none" stroke="var(--line)"/><path d="M14 13h12M14 20h12M14 27h7" stroke="var(--rose)" stroke-linecap="round"/></svg>
+      <span>Chapter one</span>
+    </div>
+    <h2>How the exam actually <span class="it">runs</span></h2>
+    <p class="lede">Before any technique, the shape of the paper, because it decides how you revise.</p>
+  </div>
+
+  <div class="col rev">
+    <div class="grid g3">
+      <article class="card">
+        <span class="lab">The clock</span>
+        <h4>Keep an hour for the chart</h4>
+        <p>Roughly eighty multiple choice questions, then the chart analysis. Give the analysis a full hour, and do not lose that hour. If you have studied well the multiple choice goes quickly, which buys you even more time for the chart.</p>
+      </article>
+      <article class="card">
+        <span class="lab">The rules</span>
+        <h4>Closed book, no cheat sheets</h4>
+        <p>It has never been the case in any past exam that you may take any sheet in. It is closed book, strictly, with cameras on you. If anyone tells you otherwise, that is inaccurate.</p>
+      </article>
+      <article class="card">
+        <span class="lab">Before the day</span>
+        <h4>A mock exam, one week out</h4>
+        <p>There is a mock exam a week before the real one, and guidance on what is involved comes with it. So you will know in good time.</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:30px">
+    <p>The reasoning behind the closed book matters more than the rule. <strong>The exam is about knowing things.</strong> When you go into the next semester you do not want to be relying on cheat sheets; you want to know certain basics. And they cannot examine everything, so they will ask about the fundamentals.</p>
+  </div>
+
+  <div class="voice rev">
+    <p>They are only going to test you on what you know. So apply what you know, and show that you understand.</p>
+    <p class="attr">On what the paper is for</p>
+  </div>
+</section>
+
+<svg class="divider" viewBox="0 0 240 26" aria-hidden="true"></svg>
+
+<section id="memorise">
+  <div class="col sec-head rev">
+    <div class="sec-mark">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 12l4 4 8-9" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 24l4 4 8-9" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 11h9M24 25h9" stroke="var(--line)" stroke-linecap="round"/></svg>
+      <span>Chapter two</span>
+    </div>
+    <h2>The list you should know <span class="it">cold</span></h2>
+    <p class="lede">These are the no-brainers. Some questions are so easy that simply knowing this list hands you a pile of marks, and the marks give you confidence for the rest.</p>
+  </div>
+
+  <div class="col-wide rev">
+    <div class="checks" id="checkList"></div>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:34px">
+    <h3 class="sub">And two things about <span class="it">degrees</span></h3>
+    <p>One thing has been emphasised this time that was not emphasised before: <strong>being able to look at a degree and say which pada of the rashi it falls in.</strong> If you can look at a graha and place its pada by degree, that is going to be really good.</p>
+    <p>Alongside it: <strong>work out the navamsha yourself</strong>, the easy way, counting 1, 4, 7, 10. Being able to do that by hand is a genuinely good thing to have.</p>
+  </div>
+
+  <div class="col rev" style="margin-top:26px">
+    <div class="pair">
+      <div class="yes">
+        <h4><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.5 3.5L13 5" fill="none" stroke="var(--jade)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Do</h4>
+        <ul>
+          <li>Place a graha's <b>pada by its degree</b>, inside the rashi</li>
+          <li>Work out a graha's or the Lagna's <b>navamsha by hand</b>, using 1, 4, 7, 10</li>
+          <li>Know the whole no-brainer list above</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h4><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="var(--rose)" stroke-width="1.8" stroke-linecap="round"/></svg>Don't lose sleep over</h4>
+        <ul>
+          <li>Memorising <b>which nakshatras fall in each rashi</b>. It would be very surprising to be asked that</li>
+          <li>Whether to memorise or calculate the <b>chara karakas</b>: do whichever you are comfortable with. Memorising them is not that difficult</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="divider" viewBox="0 0 240 26" aria-hidden="true"></svg>
+
+<section id="write">
+  <div class="col sec-head rev">
+    <div class="sec-mark">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M9 31l3-8 15-15 5 5-15 15z" fill="none" stroke="var(--rose)"/><path d="M24 11l5 5" stroke="var(--gold)"/></svg>
+      <span>Chapter three</span>
+    </div>
+    <h2>Writing the chart <span class="it">analysis</span></h2>
+    <p class="lede">The single most useful piece of advice in the session, and it goes against what some people are being told.</p>
+  </div>
+
+  <div class="col body-col rev">
+    <p><strong>Do not try to write about all twelve houses.</strong> It is not possible in the time, and if you attempt it you will end up analysing at a very shallow level, which is exactly what the paper is not asking for.</p>
+    <p>Instead, <strong>pick four or five prominent houses and go into real depth</strong>. Look at where things actually are. If a house is empty and has no aspects on it, you do not need to talk about it at all.</p>
+  </div>
+
+  <div class="rule col rev">
+    By the time you have done five houses, you have proven that you know it, and that you can explain it.
+  </div>
+
+  <div class="col body-col rev">
+    <p>Depth means everything at once for that house: the rashi, where the lord goes, where the karaka goes, the sukshma karakas, the aspects, and the relationship between the karakas and the bhavas, all taken together. Even going into the navamsha of it.</p>
+    <p><strong>Then spend the rest of your breadth on yogas.</strong> Dhana yogas, raja yogas, other yogas, spiritual yogas. Pick them up and name them. That is what shows the range of your learning, rather than repeating the same reasoning house after house.</p>
+    <p>The person who scored top marks last year did not write about all twelve houses either.</p>
+  </div>
+
+  <div class="voice rev">
+    <p>You do not want to demonstrate in your exam that you know the same thing again and again and again. Try to show that you understand the concept.
+    </p>
+    <p class="attr">On what earns the marks</p>
+  </div>
+</section>
+
+<svg class="divider" viewBox="0 0 240 26" aria-hidden="true"></svg>
+
+<section id="order">
+  <div class="col sec-head rev">
+    <div class="sec-mark">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="none" stroke="var(--line)"/><path d="M20 6v14l9 5" fill="none" stroke="var(--rose)" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <span>Chapter four</span>
+    </div>
+    <h2>Read in an <span class="it">order</span>, not by instinct</h2>
+    <p class="lede">The other repeated instruction of the session. Do not jump from house to planet to house because something occurred to you. Have a list of what you do to analyse a house or an area of life, and follow it every time.</p>
+  </div>
+
+  <div class="col rev">
+    <div class="steps">
+      <div class="step">
+        <div>
+          <h4>Start at the Lagna, always</h4>
+          <p>It is foundational and it says a lot. Talk about the Lagna even if there is no graha in it. Then the Lagna rashi, the Lagna lord, the Lagna karaka, the aspects onto the Lagna, and the condition of that lord and that karaka.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h4>Take the rashi apart</h4>
+          <p>Its <em>tattva</em>, which tells you what motivates the person. Its <em>mode</em>, cardinal, fixed or dual, which tells you how they move. Its <em>ruler</em>, which colours the whole thing. Do this before touching any graha sitting there.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h4>What the bhava itself signifies</h4>
+          <p>For the first house: the self, what you think of yourself, self-confidence, the body and health. Run the bhava ecosystem over it before you personalise anything.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h4>Now the grahas placed there</h4>
+          <p>And place them <em>from the Chalit</em>. The house placement of any graha is always taken from the Chalit chart, which can move a graha out of the house you thought it was in.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h4>Aspects onto the house</h4>
+          <p>Both graha drishti and rashi drishti. Name what each aspecting graha brings by its nature, and check what rashi it is aspecting into.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h4>The lord of the house, and where it goes</h4>
+          <p>The lord is <em>what you do</em> in that area of life, where the energy of that house is projected. Follow it to its destination and read that destination as the outlet.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h4>The karaka of the house, and its condition</h4>
+          <p>The karaka is <em>your experience</em> of that area. Here the dignity really does matter, because you are now looking at a placement rather than an aspect. A damaged karaka undercuts everything else you said.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h4>Then the fine layers</h4>
+          <p>Sukshma karakas, the relationship between the karakas and the bhavas, the navamsha, the SAV points, and the Arudha Lagna where it belongs. Bring them into the same picture rather than treating them as separate topics.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h4>Finally, the yogas</h4>
+          <p>Dhana, raja, spiritual and the rest. Name them and say why they form or only partly form.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="voice rev">
+    <p>Let us not jump from house to house to planet to planet. Let us follow a structure, so you know: here is my list of what I need to do to analyse a house.
+    </p>
+    <p class="attr">On method</p>
+  </div>
+</section>
+
+<svg class="divider" viewBox="0 0 240 26" aria-hidden="true"></svg>
+
+<section id="worked">
+  <div class="col sec-head rev">
+    <div class="sec-mark">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="6" width="28" height="28" fill="none" stroke="var(--line)"/><path d="M20 6l14 14-14 14L6 20z" fill="none" stroke="var(--line)"/><path d="M20 6l7 7-7 7-7-7z" fill="var(--blush)" stroke="var(--rose)" stroke-width=".8"/></svg>
+      <span>Chapter five</span>
+    </div>
+    <h2>One Lagna, worked all the way <span class="it">through</span></h2>
+    <p class="lede">A chart was offered for practice. Only the first house was covered, and it produced enough material to fill a page, which is the whole point of the advice about going deep on a few houses.</p>
+  </div>
+
+  <div class="col-wide rev">
+    <div class="chart-pair" style="grid-template-columns:1fr">
+      <div style="max-width:280px;margin:0 auto">
+        <p class="chart-cap">the Lagna and what touches it</p>
+        <div data-chart='{"lagna":12,"hi":[1],"glyphs":{"1":"Lagna"}}'></div>
+      </div>
+      <p class="verdict">A dual, watery Lagna ruled by Jupiter<small>with Jupiter, Venus and Mars all casting on it, and the co-lord in the twelfth</small></p>
+    </div>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:34px">
+    <h3 class="sub">The rashi, before anything <span class="it">else</span></h3>
+    <p><strong>Watery.</strong> The tattva tells you what motivates the person. With a water Lagna, how they feel about themselves and their whole sense of self is driven by how they <em>feel</em>. Compare that with an earthy Lagna, where the sense of self is driven by something more practical, by what they own or what they achieve. It also makes them intuitive: not purely emotional, but running a logic that is feeling-based. And since the first house is the body, the rashi says something about the body's composition too.</p>
+    <p><strong>Dual.</strong> The mode is about adaptability, not about logic. A cardinal sign is dynamic, takes the initiative, takes the lead. A fixed sign is set, determined, reliable, and sees it through to the end. A dual sign does a bit of both: some flexibility, some stability.</p>
+    <p><strong>Ruled by Jupiter.</strong> So the person is wise, spiritual, composed, compassionate, expansive, and values wisdom. Compassion especially, given that the ruler is landing on a water sign. And being the twelfth sign, generous.</p>
+    <p><strong>And co-ruled by Ketu.</strong> So someone who internalises, detaches and spiritualises things, and who can renunciate. Knowledge, learning and teaching matter a great deal to this person.</p>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:30px">
+    <h3 class="sub">Then the aspects onto <span class="it">it</span></h3>
+    <p><strong>Jupiter's ninth aspect.</strong> It blesses whatever it falls on, and here it falls on its own sign. That is a very positive aspect and a very good placement, and its ninth drishti bestows wealth on the area it touches. Note the priority he set: <em>which rashi Jupiter is aspecting matters more than where Jupiter itself sits</em>. Even a debilitated Jupiter gives a good ninth aspect.</p>
+    <p><strong>Venus's seventh aspect.</strong> Venus seeks enjoyment, partnership, harmony, affection, mutual exchange and refinement through the house it aspects. So the person is refined. And the aspect still works even though this Venus is in poor shape, because it is aspecting the sign of its own exaltation.</p>
+    <p><strong>Mars's aspect.</strong> Confrontation and competition. The person can be confrontational and competitive, and that is reinforced elsewhere in the chart. What would normally counterbalance Mars is Venus, holding relationship and harmony as the priority. But when Venus as a karaka is weak, that counterweight is compromised and Mars carries more of the day: <strong>being right, and having the last word, comes ahead of the relationship.</strong> The SAV difference between the two houses concerned pointed the same way.</p>
+    <p>From the first house alone, then: spiritual, knowledgeable, blessed, generous, refined, charming, and competitive. That is already a page, before the sixth and seventh houses have been touched.</p>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:30px">
+    <h3 class="sub">The lord, and where the energy <span class="it">goes</span></h3>
+    <p>The Lagna lord is what you <em>do</em>, and it always protects. Here there are two lords, going to two places.</p>
+    <p>One is exalted and lands in the <strong>fourth</strong>. So the person handles themselves by going inward, and finds emotional peace at home. The happier and more emotionally content they are, and the better they feel about their home, their homeland and their relationship with their mother, the higher their self-confidence rises. The energy is genuinely turned inward.</p>
+    <p>The other lord goes to the <strong>twelfth</strong>, which reads as detachment from a foreign land, a pull back towards the homeland, or a wish to spend time in an ashram and give service. Letting go of the self, and going inward, has helped this person.</p>
+  </div>
+
+  <div class="col body-col rev" style="margin-top:30px">
+    <h3 class="sub">The karaka, which undercuts <span class="it">everything</span></h3>
+    <p>The karaka of the Lagna is the Sun, and here it sits at under one degree of its own sign, in the first pada of the nakshatra that bridges two rashis. That is <strong>Gandanta</strong>, and it makes the experience of life difficult, with a great deal of struggle. Keep Gandanta separate in your head from everything else: it is telling you the karaka is affected, and therefore the health, the sense of self and the confidence are affected, whatever else the chart says. <strong>The karaka is your experience.</strong></p>
+    <p>On top of that the Sun sits with Saturn, and <strong>Sun with Saturn is never good</strong>, as the story of their relationship tells you. Problems with authority and with discipline: with the boss, with the father, with being under authority and with holding it.</p>
+    <p>What answers back is the navamsha. The Sun is exalted there, and that is where the natural leadership and the readiness to take initiative come from, despite the Gandanta. This is exactly why you look at both.</p>
+  </div>
+
+  <div class="col rev">
+    <div class="asked">
+      <div class="q"><span class="mark">?</span><p>Would the dasha matter here? Would the person be more competitive during the Mars dasha?</p></div>
+      <div class="a">
+        <p>Yes, definitely. Running the Mars dasha in the early years, that Mars energy would be very significant indeed, and the person would be quite fiery through it.</p>
+        <p>And grahas mature. With years and with experience you learn to manage these things, especially with Jupiter's blessing on the Lagna giving the wisdom and knowledge to work on yourself. The influence is real, but whether it stays permanent is another matter.</p>
+      </div>
+      <p class="tagline">Asked in the session</p>
+    </div>
+  </div>
+</section>
+
+<svg class="divider" viewBox="0 0 240 26" aria-hidden="true"></svg>
+
+<section id="rules">
+  <div class="col sec-head rev">
+    <div class="sec-mark">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M7 20h26M7 12h26M7 28h18" stroke="var(--line)" stroke-linecap="round"/><circle cx="28" cy="28" r="4" fill="none" stroke="var(--rose)"/></svg>
+      <span>Chapter six</span>
+    </div>
+    <h2>The rules that came up along the <span class="it">way</span></h2>
+    <p class="lede">Scattered through the reading, and worth collecting in one place.</p>
+  </div>
+
+  <div class="col rev">
+    <dl class="defs">
+      <div class="def">
+        <dt>Chalit decides placement<small>always</small></dt>
+        <dd>The house placement of any graha is taken from the Chalit chart. A graha twenty degrees away from the house cusp is not in the house you first thought. <strong>MKS is judged from the Chalit too.</strong> The one exception noted: the padas of a nakshatra are their own matter, not a Chalit question.</dd>
+      </div>
+      <div class="def">
+        <dt>Drishtis always work<small>whatever the aspecting graha's state</small></dt>
+        <dd>An aspect is not diminished by the aspecting graha being debilitated, or in MKS. Even a debilitated graha gives a good aspect: by definition its seventh drishti falls on the sign of its own exaltation. What matters is <strong>the rashi it is aspecting into</strong>. If it is beneficent in that rashi, the aspect is beneficial and protective for the destination. This holds regardless of the natural benefic or malefic nature of the graha.</dd>
+      </div>
+      <div class="def">
+        <dt>But placement beats aspect<small>when you weigh impact</small></dt>
+        <dd>A debilitated graha sitting somewhere is far more impactful in the chart than the aspect it throws. So dignity is not important when you are reading an aspect, and dignity is very important when you are reading a placement. Both statements are true at once; know which one you are doing.</dd>
+      </div>
+      <div class="def">
+        <dt>MKS is contagious<small>by conjunction</small></dt>
+        <dd>A graha sitting with a graha in MKS is pulled down along with it. Its drishti, however, is untouched: the aspect still lands with full effect. Only the bhava it occupies suffers.</dd>
+      </div>
+      <div class="def">
+        <dt>Saving an MKS<small>what was applied here</small></dt>
+        <dd>A graha in a <strong>kendra from the Lagna</strong> can save it. And a graha casting rashi drishti or graha drishti onto the MKS graha, <strong>while itself sitting in its own house</strong>, helps cancel it. A karaka that is not in a kendra does not.</dd>
+      </div>
+      <div class="def">
+        <dt>Neecha bhanga<small>and what it leaves behind</small></dt>
+        <dd>Debilitation is cancelled when the lord of the exaltation sign sits in a kendra, from the Lagna or from the Moon. But cancellation is not erasure: <strong>you still struggle with that area initially</strong>, and it is the karakatva of the graha that does the cancelling that brings you out of it.</dd>
+      </div>
+      <div class="def">
+        <dt>A fully manifesting Mahapurusha yoga<small>the extra condition</small></dt>
+        <dd>The graha must be in its own sign or exalted, and in a kendra. Then the qualification most people forget: <strong>the lord of its exaltation rashi has to be strong.</strong> If that lord is weak, or in MKS, the yoga does not fully manifest.</dd>
+      </div>
+      <div class="def">
+        <dt>Gandanta<small>not only the Moon</small></dt>
+        <dd>Any graha in Gandanta suffers, and so does the Lagna if the Lagna falls there. It is the bridging point between rashis where there is no connection of rashi and no connection of nakshatra, and it makes the experience of that karaka's area difficult and full of struggle.</dd>
+      </div>
+      <div class="def">
+        <dt>Retrograde<small>the cost</small></dt>
+        <dd>A retrograde graha needs a great deal of effort, and repeated effort, for its significations to come through.</dd>
+      </div>
+      <div class="def">
+        <dt>Kendradhipati dosha<small>a balancing problem</small></dt>
+        <dd>When one benefic rules two kendras, getting the balance right between those two areas of life is always a challenge. Where it rules the fourth and the seventh, that is home life against spouse, or mother against spouse, or happiness against marriage. <strong>The stronger that graha, the better</strong>, and if it is also the badhaka for that Lagna, the difficulty compounds.</dd>
+      </div>
+      <div class="def">
+        <dt>The seventh and ignorance<small>read as an assignment</small></dt>
+        <dd>The seventh house shows where you carry ignorance: an area you are here to improve on. Where the seventh lord is troubled, expect a karmic ignorance around relationship, and treat it as the work rather than the verdict.</dd>
+      </div>
+      <div class="def">
+        <dt>The rest of it in a line each</dt>
+        <dd>Rahu moves backwards, so its degrees count in reverse when you work out the chara karakas. Vipareeta raja yogas were read here from the twelfth lord placed in the sixth, and the sixth lord placed in the sixth: the signature of a person who keeps coming back from difficulty. Gajakesari forms from Jupiter and the Moon in kendra from each other, and can be present without being complete. The fifth house is the house of mantra, and activating it can shift things markedly.</dd>
+      </div>
+    </dl>
+  </div>
+
+  <div class="col-wide rev" style="margin-top:34px">
+    <div class="callout">
+      <span class="lab">Counting from a karaka, not from the Lagna</span>
+      <h3>Karakaat Bhavaat</h3>
+      <p>Several of the quiz questions turned on this, so hold the count itself clearly.</p>
+      <div class="grid g2" style="margin-top:20px">
+        <article class="card">
+          <h4>The wealth pool</h4>
+          <p>The <strong>fourth from the Sun</strong>. Read the pool of wealth there, and note that the fourth from the Sun is very important generally.</p>
+        </article>
+        <article class="card">
+          <h4>The flow of wealth</h4>
+          <p>The <strong>tenth from the Moon</strong>. The pool is one thing, the flow into it is another.</p>
+        </article>
+        <article class="card">
+          <h4>Success at work</h4>
+          <p>The <strong>tenth from Mercury</strong>, because Mercury is the karaka for career.</p>
+        </article>
+        <article class="card">
+          <h4>Gains from career</h4>
+          <p>The <strong>tenth from Jupiter</strong>. Which is a different question from career success, and the two get confused easily.</p>
+        </article>
+      </div>
+      <p style="margin-top:22px"><strong>And the negative counts, which is where the wording catches you.</strong> Counted from a bhava to a bhava, the negative positions are the <strong>6th, 8th and 12th</strong>. Counted from the bhava lord to the karaka, they are the <strong>6th, 8th, 2nd and 12th</strong>. Read the question slowly enough to know which of the two is being asked.</p>
+    </div>
+  </div>
+</section>
+
+<svg class="divider" viewBox="0 0 240 26" aria-hidden="true"></svg>
+
+<section id="practice">
+  <div class="col sec-head rev">
+    <div class="sec-mark">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M15 14a5 5 0 116.5 4.8c-1 .4-1.5 1.2-1.5 2.2v1.5" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round"/><circle cx="20" cy="28" r="1.8" fill="var(--gold)"/></svg>
+      <span>Chapter seven</span>
+    </div>
+    <h2>The questions, and the <span class="it">working</span></h2>
+    <p class="lede">From the quiz. The value is not the answer but the sequence of small facts each one is quietly testing.</p>
+  </div>
+
+  <div class="col rev" style="display:flex; flex-direction:column; gap:18px">
+
+    <div class="qcard">
+      <p class="qh"><span>Question</span>How long does Jupiter take to travel the zodiac, and how long do Rahu and Ketu take?</p>
+      <div class="ans">
+        <span class="key">Jupiter, about 12 years &middot; Rahu and Ketu, 18</span>
+        <p>Jupiter takes roughly a year in a sign, so twelve to thirteen years for the circle. Rahu and Ketu take a year and a half in each sign, so eighteen. Add this to the list you simply know; you will get points for it.</p>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <p class="qh"><span>Question</span>Which houses does Saturn favour?</p>
+      <div class="ans">
+        <span class="key">3, 6, 11</span>
+        <p>The trap is answering 3, 6, 10 and 11, on the reasoning that it must be all the upachaya houses. That set belongs to Rahu. For Saturn it is <strong>3, 6 and 11</strong>. Remember the difference between the two.</p>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <p class="qh"><span>Question</span>Karaka from the Bhava Lord is negative in which of these?</p>
+      <div class="ans">
+        <span class="key">6, 8, 2, 12</span>
+        <p>The other two options offered were 6, 8, 12 and 6, 8, 3, 11, and both are there to catch you. Bhava counted from bhava gives the 6th, 8th and 12th. It is the karaka counted from the bhava lord that adds the 2nd, giving <strong>6, 8, 2, 12</strong>.</p>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <p class="qh"><span>Question</span>What is the dispositor of the lord of the wealth pool bhava?</p>
+      <div class="ans">
+        <span class="key">Three steps, not one</span>
+        <p>This one is pure wording, and it is testing three separate pieces of knowledge in sequence. <strong>First</strong>, what is the wealth pool bhava? The fourth from the Sun. Count it and land on the house. <strong>Second</strong>, who lords that house? <strong>Third</strong>, and only then, in whose sign does that lord sit?</p>
+        <p>A wrinkle was accepted in the discussion: where a node is co-lord of the house in question and sits in the sign of the other lord, a second answer can be defended. Which is a useful reminder that the marks are in the working, not the guess.</p>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <p class="qh"><span>Question</span>Using Karakaat Bhavaat, from which bhava do you read someone's success at work?</p>
+      <div class="ans">
+        <span class="key">The 10th from Mercury</span>
+        <p>The instinct in the room was to count the tenth from Jupiter, and that was corrected live: <strong>the tenth from Jupiter gives gains from career, while actual career success is the tenth from Mercury</strong>, Mercury being the karaka for career. In the chart on screen that landed on a house that was not among the options offered.</p>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <p class="qh"><span>Question</span>True or false: Venus is forming a fully manifesting Malavya Yoga.</p>
+      <div class="ans">
+        <span class="key">False</span>
+        <p>Venus qualified on the obvious count. But for the yoga to <em>fully manifest</em>, the lord of the graha's exaltation rashi must be strong. Venus exalts in Pisces, so the test falls on Jupiter, and that Jupiter was neither strong nor well placed, sitting in MKS. So the yoga forms but does not fully manifest.</p>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <p class="qh"><span>Question</span>How many grahas can you see potentially saving Jupiter's MKS?</p>
+      <div class="ans">
+        <span class="key">One</span>
+        <p>Venus, on two counts at once. Venus sits in a <strong>kendra from the Lagna</strong>, and Venus is also casting rashi drishti onto that Jupiter <strong>while being in its own house</strong>, which is itself a cancelling condition. The karaka of the third house, Mars, does not qualify, because it is not in a kendra.</p>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <p class="qh"><span>Question</span>On which bhavas do the combined rashi drishtis of Saturn and Jupiter <em>not</em> fall?</p>
+      <div class="ans">
+        <span class="key">Work forwards, then take the remainder</span>
+        <p>Do not try to answer the negative directly. <strong>Write down where each one's rashi drishti does fall</strong>, Jupiter's three and Saturn's three, list them together, and then read off the houses that are left over. That is the answer.</p>
+        <p>Two details that decide it: a graha's rashi drishti does not fall on the sign it occupies, nor on the sign adjacent to it. And the answer is wanted in <strong>bhavas, not rashis</strong>, so convert before you commit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="divider" viewBox="0 0 240 26" aria-hidden="true"></svg>
+
+<section id="sheet">
+  <div class="col sec-head rev">
+    <div class="sec-mark">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="6" width="24" height="28" rx="3" fill="none" stroke="var(--line)"/><path d="M13 14h14M13 20h14M13 26h9" stroke="var(--rose)" stroke-linecap="round"/></svg>
+      <span>Chapter eight</span>
+    </div>
+    <h2>Everything, in one <span class="it">glance</span></h2>
+    <p class="lede">The whole session on a single page.</p>
+  </div>
+
+  <div class="col-wide rev">
+    <div class="sheet">
+      <div class="scroll-x">
+      <table>
+        <thead><tr><th>Point</th><th>What to do with it</th></tr></thead>
+        <tbody>
+          <tr><td>Exam shape</td><td>About 80 multiple choice, then the chart. Protect a full hour for the chart. Closed book, no sheets, cameras on. Mock exam a week before.</td></tr>
+          <tr><td>The analysis</td><td>Four or five houses in real depth, never all twelve. Skip an empty house with no aspects. Spend the remaining breadth on named yogas.</td></tr>
+          <tr><td>Order of reading</td><td>Rashi, bhava, grahas from Chalit, aspects, lord, karaka, fine layers, yogas. Same order every time.</td></tr>
+          <tr><td>Lord versus karaka</td><td>The lord is what you <em>do</em> in that area. The karaka is your <em>experience</em> of it. Read both, and read the karaka's condition carefully.</td></tr>
+          <tr><td>Tattva, mode, ruler</td><td>Tattva says what motivates. Mode says how adaptable: cardinal dynamic, fixed determined, dual a bit of both. Ruler colours the whole.</td></tr>
+          <tr><td>Chalit</td><td>Placement and MKS both come from the Chalit chart.</td></tr>
+          <tr><td>Drishti</td><td>Never diminished by the aspecting graha's debility or MKS. Judge it by the rashi being aspected. Placement still outweighs aspect for impact.</td></tr>
+          <tr><td>MKS</td><td>Contagious by conjunction, not to the drishti. Saved by a kendra from the Lagna, or by a drishti from a graha sitting in its own house.</td></tr>
+          <tr><td>Neecha bhanga</td><td>Exaltation lord in a kendra from Lagna or Moon. The early struggle stays; the cancelling graha's karakatva is the way out.</td></tr>
+          <tr><td>Mahapurusha</td><td>Own sign or exalted, in a kendra, <em>and</em> the lord of its exaltation rashi strong. Otherwise it does not fully manifest.</td></tr>
+          <tr><td>Gandanta</td><td>Any graha, and the Lagna too. Struggle in that karaka's area of life, whatever else is good.</td></tr>
+          <tr><td>Sun with Saturn</td><td>Never good. Authority, discipline, father, boss.</td></tr>
+          <tr><td>Retrograde</td><td>Effort, and repeated effort.</td></tr>
+          <tr><td>Kendradhipati dosha</td><td>One benefic ruling two kendras: balancing those two areas is the lifelong challenge. Stronger graha, easier balance.</td></tr>
+          <tr><td>Karakaat Bhavaat</td><td>Wealth pool: 4th from the Sun. Flow of wealth: 10th from the Moon. Career success: 10th from Mercury. Gains from career: 10th from Jupiter.</td></tr>
+          <tr><td>Negative counts</td><td>Bhava from bhava: 6, 8, 12. Karaka from the bhava lord: 6, 8, 2, 12.</td></tr>
+          <tr><td>Cycles</td><td>Jupiter about 12 years. Rahu and Ketu 18, at a year and a half a sign.</td></tr>
+          <tr><td>Upachaya</td><td>Saturn favours 3, 6, 11. Rahu takes 3, 6, 10, 11.</td></tr>
+          <tr><td>Chara karakas</td><td>Rahu counts backwards. Memorise them or calculate them, whichever suits you.</td></tr>
+          <tr><td>Rahu as Atmakaraka</td><td>Innocent, trusting, no boundaries, open to a guru with full faith, and gels with any age. The work is finding the balance between trusting everyone and, once hurt, trusting nobody.</td></tr>
+          <tr><td>Vipareeta raja yoga</td><td>Read here from the 12th lord in the 6th, and the 6th lord in the 6th: the ability to keep coming back.</td></tr>
+          <tr><td>Gajakesari</td><td>Jupiter and the Moon in kendra from each other. It can be present without being complete.</td></tr>
+          <tr><td>Degrees</td><td>Be able to name a graha's pada from its degree, and to work out a navamsha by hand using 1, 4, 7, 10.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <svg width="120" height="42" viewBox="0 0 120 42" aria-hidden="true">
+      <path d="M0 21h44" stroke="var(--line)"/><path d="M76 21h44" stroke="var(--line)"/>
+      <path d="M60 8l7 13-7 13-7-13z" fill="none" stroke="var(--gold)"/>
+      <circle cx="60" cy="21" r="3" fill="var(--blush)"/>
+    </svg>
+    <p class="om">ॐ</p>
+    <p>Notes from a mentoring session, in the words used there.<br>Jai Gurudev.</p>
+  </div>
+</footer>
+
+<style>
+#heroChart .kundali{max-width:340px; filter:drop-shadow(0 20px 44px var(--glow))}
+</style>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- the no-brainer list ---------- */
+  var ITEMS = [
+    ["Dignity", "natural friend, enemy, neutral"],
+    ["Nakshatra Tara", ""],
+    ["Exaltation and debilitation degrees", ""],
+    ["Rashi and Graha Drishti", ""],
+    ["Navagraha Stotram", "the words, by heart"],
+    ["Multrikona degrees", ""],
+    ["Stambhi Grahas", ""],
+    ["MKS placement", ""],
+    ["Karakas and Sukshma Karakas", ""],
+    ["Bhavat Bhavam", ""],
+    ["Full Panchadi Maitri", ""],
+    ["The 12 Bhavas", ""],
+    ["All Bhava classifications", "Dharma, Artha, Kama; Apoklima, Panaphara, Upachaya"],
+    ["Every Rashi", "element, gender, mode: cardinal, fixed, dual"]
+  ];
+  var cl = document.getElementById('checkList');
+  if (cl){
+    cl.innerHTML = ITEMS.map(function(it){
+      return '<div class="check">' +
+        '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.5 3.5L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+        '<span><b>' + it[0] + '</b>' + (it[1] ? '<br>' + it[1] : '') + '</span></div>';
+    }).join('');
+  }
+
+  /* ---------- north indian kundali ---------- */
+  var POLY = {
+    1:"150,0 225,75 150,150 75,75", 2:"0,0 150,0 75,75", 3:"0,0 75,75 0,150",
+    4:"0,150 75,75 150,150 75,225", 5:"0,150 75,225 0,300", 6:"0,300 75,225 150,300",
+    7:"150,300 75,225 150,150 225,225", 8:"150,300 225,225 300,300", 9:"300,300 225,225 300,150",
+    10:"300,150 225,225 150,150 225,75", 11:"300,150 225,75 300,0", 12:"300,0 225,75 150,0"
+  };
+  var TXT = {1:[150,70],2:[75,38],3:[38,78],4:[75,148],5:[38,224],6:[75,262],7:[150,230],8:[225,262],9:[262,224],10:[225,148],11:[262,78],12:[225,38]};
+  var uid = 0;
+  function kundali(cfg){
+    var lagna = cfg.lagna || 1, hi = cfg.hi || [], glyphs = cfg.glyphs || {};
+    var gid = 'hg' + (uid++);
+    var fill = cfg.tone === 'v' ? 'var(--lilac)' : 'url(#' + gid + ')';
+    var stroke = cfg.tone === 'v' ? 'var(--violet)' : 'var(--rose)';
+    var out = '<svg class="kundali" viewBox="-6 -6 312 312" role="img" aria-label="North Indian chart">';
+    out += '<defs><linearGradient id="'+gid+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--gold-soft)"/><stop offset="100%" stop-color="var(--lilac)"/></linearGradient></defs>';
+    out += '<rect x="0" y="0" width="300" height="300" fill="var(--paper-2)" stroke="var(--line)" stroke-width="1.4"/>';
+    hi.forEach(function(h){ out += '<polygon points="'+POLY[h]+'" fill="'+fill+'" fill-opacity=".8" stroke="'+stroke+'" stroke-width="1.2"/>'; });
+    out += '<g class="frame"><path d="M0 0L300 300M300 0L0 300M150 0L300 150 150 300 0 150Z"/></g>';
+    for (var h=1; h<=12; h++){
+      var rashi = ((lagna - 1 + h - 1) % 12) + 1, t = TXT[h], on = hi.indexOf(h) > -1;
+      out += '<text class="rn'+(on?' on':'')+'" x="'+t[0]+'" y="'+t[1]+'">'+rashi+'</text>';
+      if (glyphs[h]) out += '<text class="gl" x="'+t[0]+'" y="'+(t[1]+18)+'">'+glyphs[h]+'</text>';
+    }
+    return out + '</svg>';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-chart]'), function(el){
+    try { el.innerHTML = kundali(JSON.parse(el.getAttribute('data-chart'))); } catch(e){}
+  });
+  var hc = document.getElementById('heroChart');
+  if (hc) hc.innerHTML = kundali({lagna:1, hi:[1,4,5,7,10]});
+
+  /* ---------- ornamental dividers ---------- */
+  var dv = 0;
+  Array.prototype.forEach.call(document.querySelectorAll('svg.divider'), function(svg){
+    var id = 'dvg' + (dv++);
+    svg.setAttribute('viewBox','0 0 260 28');
+    svg.innerHTML =
+      '<defs>' +
+        '<linearGradient id="'+id+'a" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="var(--line)" stop-opacity="0"/><stop offset="100%" stop-color="var(--line)" stop-opacity="1"/></linearGradient>' +
+        '<linearGradient id="'+id+'b" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="var(--line)" stop-opacity="1"/><stop offset="100%" stop-color="var(--line)" stop-opacity="0"/></linearGradient>' +
+      '</defs>' +
+      '<path d="M4 14h96" stroke="url(#'+id+'a)"/><path d="M160 14h96" stroke="url(#'+id+'b)"/>' +
+      '<circle cx="106" cy="14" r="1.7" fill="var(--lilac)"/><circle cx="154" cy="14" r="1.7" fill="var(--lilac)"/>' +
+      '<path d="M130 3.5L141 14L130 24.5L119 14Z" fill="none" stroke="var(--gold)" stroke-width=".9" opacity=".8"/>' +
+      '<path d="M130 6.6c.42 3.96 2.82 6.36 7.2 7.4-4.38 1.04-6.78 3.44-7.2 7.4-.42-3.96-2.82-6.36-7.2-7.4 4.38-1.04 6.78-3.44 7.2-7.4z" fill="var(--gold-bright)" opacity=".95"/>' +
+      '<circle cx="130" cy="14" r="1.2" fill="var(--paper)" opacity=".8"/>';
+  });
+
+  /* ---------- chrome: progress, ghosts, sparkles, top ---------- */
+  var bar = document.createElement('div'); bar.id = 'progress'; document.body.appendChild(bar);
+  var top = document.createElement('button');
+  top.id = 'toTop'; top.type = 'button'; top.setAttribute('aria-label','Back to the top');
+  top.innerHTML = '<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 15V4M4 9l5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  top.addEventListener('click', function(){ window.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'}); });
+  document.body.appendChild(top);
+
+  var ROMAN = ['I','II','III','IV','V','VI','VII','VIII'];
+  Array.prototype.forEach.call(document.querySelectorAll('main section'), function(sec, i){
+    if (!ROMAN[i]) return;
+    var g = document.createElement('div');
+    g.className = 'ghost'; g.setAttribute('aria-hidden','true'); g.textContent = ROMAN[i];
+    sec.insertBefore(g, sec.firstChild);
+  });
+
+  var heroCol = document.querySelector('.hero-grid > div:first-child');
+  if (heroCol) Array.prototype.forEach.call(heroCol.children, function(el){ el.classList.add('lift'); });
+  var hero = document.querySelector('header.hero');
+  if (hero){
+    var cue = document.createElement('div');
+    cue.className = 'cue'; cue.setAttribute('aria-hidden','true');
+    cue.innerHTML = 'begin<span></span>';
+    hero.appendChild(cue);
+  }
+
+  function starSVG(size){
+    return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 24 24" aria-hidden="true">' +
+      '<path d="M12 0c.7 6.6 4.7 10.6 12 12-7.3 1.4-11.3 5.4-12 12-.7-6.6-4.7-10.6-12-12C7.3 10.6 11.3 6.6 12 0z" fill="currentColor"/></svg>';
+  }
+  function sparkleField(host, n, spread){
+    var box = document.createElement('div');
+    box.className = 'sparkles'; box.setAttribute('aria-hidden','true');
+    var html = '';
+    for (var i=0;i<n;i++){
+      html += '<span style="position:absolute;left:'+(Math.random()*100).toFixed(2)+'%;top:'+(Math.random()*100).toFixed(2)+'%">' + starSVG(5 + Math.round(Math.random()*11)) + '</span>';
+    }
+    box.innerHTML = html;
+    host.appendChild(box);
+    Array.prototype.forEach.call(box.querySelectorAll('svg'), function(sv){
+      sv.style.position = 'static';
+      sv.style.animationDelay = (-Math.random()*spread).toFixed(2) + 's';
+      sv.style.animationDuration = (5 + Math.random()*5).toFixed(2) + 's';
+      if (Math.random() > .6) sv.style.color = 'var(--violet)';
+    });
+  }
+  if (hero && !reduce) sparkleField(hero, 20, 7);
+  var foot = document.querySelector('footer');
+  if (foot && !reduce){ foot.style.position = 'relative'; sparkleField(foot, 9, 6); }
+
+  /* ---------- reveal ---------- */
+  var revs = document.querySelectorAll('.rev');
+  if ('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -6% 0px', threshold:.04});
+    Array.prototype.forEach.call(revs, function(el){ io.observe(el); });
+  } else {
+    Array.prototype.forEach.call(revs, function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- spy and scroll chrome ---------- */
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.chapters a'));
+  var railLinks = Array.prototype.slice.call(document.querySelectorAll('.rail a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var art = document.querySelector('.hero-art .kundali');
+  var ticking = false;
+  function frame(){
+    var y = window.scrollY || 0;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? Math.min(100, (y / h) * 100) : 0) + '%';
+    top.classList.toggle('show', y > 900);
+    if (art && !reduce) art.style.transform = 'translateY(' + Math.min(y * 0.06, 44).toFixed(1) + 'px)';
+    var cur = 0;
+    secs.forEach(function(s,i){ if (s && s.offsetTop <= y + 150) cur = i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i === cur); });
+    railLinks.forEach(function(a,i){ a.classList.toggle('on', i === cur); });
+    var on = links[cur];
+    if (on){
+      var nav = on.parentElement.parentElement;
+      if (nav.scrollWidth > nav.clientWidth) nav.scrollTo({left: on.offsetLeft - nav.clientWidth/2 + on.clientWidth/2, behavior:'smooth'});
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if (ticking) return; ticking = true;
+    window.requestAnimationFrame(frame);
+  }, {passive:true});
+  window.addEventListener('resize', frame);
+  frame();
+})();
+</script>
+
+<script>
+(function(){
+  var KEY = 'jyotish-theme';
+  var root = document.documentElement;
+  var stored = null;
+  try { stored = localStorage.getItem(KEY); } catch(e){}
+  if (stored === 'light' || stored === 'dark') root.setAttribute('data-theme', stored);
+  function current(){
+    var set = root.getAttribute('data-theme');
+    if (set === 'light' || set === 'dark') return set;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  var btn = document.createElement('button');
+  btn.type = 'button'; btn.className = 'theme-toggle';
+  btn.setAttribute('aria-label','Switch between the light and the dark theme');
+  btn.innerHTML =
+    '<span class="knob" aria-hidden="true"></span>' +
+    '<svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg>' +
+    '<svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 019.8 4a8.4 8.4 0 100 20 8.4 8.4 0 0010.2-9.8z"/></svg>';
+  function sync(){
+    var mode = current();
+    btn.setAttribute('data-mode', mode);
+    btn.setAttribute('aria-pressed', mode === 'dark' ? 'true' : 'false');
+    btn.title = mode === 'dark' ? 'Switch to the light theme' : 'Switch to the dark theme';
+  }
+  btn.addEventListener('click', function(){
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem(KEY, next); } catch(e){}
+    sync();
+  });
+  var nav = document.querySelector('nav.chapters');
+  if (nav) nav.appendChild(btn);
+  sync();
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(){
+    if (!root.getAttribute('data-theme')) sync();
+  });
+})();
+</script>
